@@ -1,3 +1,9 @@
+/* nav-bar */
+.navbar {
+    background-color: #003057;
+    border-color: #E7E7E7;
+}
+
 #login .container {
   max-width: 330px;
 }

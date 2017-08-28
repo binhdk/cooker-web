@@ -1,9 +1,3 @@
-<style>
-.navbar {
-    background-color: #003057;
-    border-color: #E7E7E7;
-	}
-</style>
 
 <nav class="navbar navbar-inverse " role="navigation">
 	<div class="container">

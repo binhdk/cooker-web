@@ -2,6 +2,10 @@
 namespace dao;
 class CustomerDaoImpl extends BaseDaoImpl implements CustomerDao
 {
+    public function __construct($conn)
+    {
+        parent::__construct($conn);
+    }
 
     public function getCustomer($id)
     {

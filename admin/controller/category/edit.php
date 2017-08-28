@@ -1,30 +1,49 @@
 <?php
 //load model
-use dao\CategoryDaoImpl;
+use dao as dao;
 use model\Category;
+use utils\enum as enum;
 
-$categoryDao = dao\CategoryDaoImpl::getInstance();
+$factory = dao\AbstractDaoFactory::getDaoFactory(enum\FactoryEnum::MYSQL);
+$categoryDao = $factory->getDao(enum\DaoEnum::CATEGORY);
 if (!empty($_POST)) {
 	$category = new model\Category;
-	$category->__set($id, $_POST['name']);
-	$category->__set($name, $_POST['id']);
-	$category->__set($status, $_POST['status']);
-	
-	if($category->__get($id)) {
-	  $categoryDao->editCategory($category);
+	$category->__set('id', $_POST['id']);
+	$category->__set('name', $_POST['name']);
+	$category->__set('status', $_POST['status']);
+	if ($category->__get('id')) {
+	    $isEdit = $categoryDao->editCategory($category);
+	    if($isEdit == 1) {
+		    echo "<script>window.alert(' Update success');";
+            echo "window.location.href= 'admin.php?controller=category';";
+		    echo "</script>";
+		   
+	    } else {
+			echo "<script>window.alert(' Update fail, please do later');";
+            echo "window.location.href= 'admin.php?controller=category';";
+		    echo "</script>";
+
+	    }
 	} else {
-		$categoryDao->addCategory($category);
-	    header('location:admin.php?controller=category');
-	} 
-} else {
+		$isAdd = $categoryDao->addCategory($category);
+		if($isAdd == 1) {
+		    echo "<script>window.alert(' Add success');";
+            echo "window.location.href= 'admin.php?controller=food';";
+		    echo "</script>";
+		} else {
+			echo "<script>window.alert(' add fail, please do later');";
+            echo "window.location.href= 'admin.php?controller=food';";
+		    echo "</script>";
+		}
+	}
 	
 }
 
-if (isset($_GET['id'])) $id = intval($_GET['id']); else $id=0;
-
-$title = ($id==0) ? 'Thêm loại' : 'Sửa loại';
+if (isset($_GET['id'])) $id = intval($_GET['id']); else $id = 0;
+$title = ($id == 0) ? 'Thêm loại' : 'Sửa loại';
 $user = $_SESSION['user'];
-$category = $categoryDao->getCategory($id);
+$category = $categoryDao->getCategory($id) != null ? $categoryDao->getCategory($id)[0] : null;
 //load view
 require('admin/view/category/edit.php');
+
 ?>

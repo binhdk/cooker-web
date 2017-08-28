@@ -15,8 +15,9 @@ class BaseDaoImpl implements BaseDao
         if($sql != null){
             try{
                 $stat = $this->conn->prepare($sql);
-                $stat->execute(array($param));
+                $stat->execute($param);
                 return $stat->fetchAll(PDO::FETCH_OBJ);
+                
             }catch(PDOException $e){
                 die ("Cannot get\n");
             }
@@ -38,12 +39,14 @@ class BaseDaoImpl implements BaseDao
         if($sql != null) {
             try {
                 $stat = $this->conn->prepare($sql);
-                $stat->execute(array($param));
+                $stat->execute($param);
                 return $stat->rowCount();
             } catch(PDOException $e) {
                 die ("Cannot update\n");
+                
             }
         }
+
     }
 
     public function resultSetToModel($resultSet, $model)

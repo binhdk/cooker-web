@@ -2,7 +2,11 @@
 namespace dao;
  class OrderDaoImpl extends BaseDaoImpl implements OrderDao
  {
-
+    public function __construct($conn)
+    {
+        parent::__construct($conn);
+    }
+    
  	public function getOrder($id)
  	{
         $order = $this->get("select * from orders where id=?", $id);

@@ -1,8 +1,7 @@
 <?php
 //load model
-require_once('dao/MoAnDao.class.php');
-
 $id = intval($_GET['id']);
-MonAnDao::xoaMonAn($id);
 
+$foodDao = $factory->getDao(utils\enum\EnumDao::FOOD);
+$foodDao->delFood($id);
 header('location:admin.php?controller=monan');

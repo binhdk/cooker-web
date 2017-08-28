@@ -2,6 +2,10 @@
 namespace dao;
 class OrderDetailDaoImpl extends BaseDaoImpl implements OrderDetailDao
 {
+    public function __construct($conn)
+    {
+        parent::__construct($conn);
+    }
 
     public function getAll()
     {

@@ -18,7 +18,7 @@ class MySQLDaoFactory extends AbstractDaoFactory
         return static::$instance;
     }
 	
-    private function createConnection()
+    protected function createConnection()
     {
         if($this->conn == null) {
             try{

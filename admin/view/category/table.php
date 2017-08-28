@@ -1,15 +1,14 @@
-<style type="text/css">
-	.table th:nth-child(1), 
-	.table td:nth-child(1),
-	.table th:nth-child(2), 
-	.table td:nth-child(2),
-	.table th:nth-child(4), 
-	.table td:nth-child(4) {
-		text-align: center;
-		width: 5em;
-	}
+<style>
+  .table th:nth-child(1), 
+  .table td:nth-child(1),
+  .table th:nth-child(2), 
+  .table td:nth-child(2),
+  .table th:nth-child(4), 
+  .table td:nth-child(4) {
+    text-align: center; 
+    width: 5em;
+  }
 </style>
-
 <form id="category_form" method="post" action="admin.php?controller=category" role="form">
 
 <div class="col-xs-12">
@@ -39,9 +38,11 @@
 			<?php foreach ($categoryList as $category) : ?>
 			<tr>
 				<td><input name="id[]" type="checkbox" value="<?php echo $category->id;?>"/></td>
-				<td><?php echo $category->name;?></td>
+				<td><?php echo $category->id;?></td>
 				<td>
-				  <a href="admin.php?controller=category&amp;action=edit&id=<?php echo $category->id;?>"><?php echo $category->name;?></a></td>
+				  <a href="admin.php?controller=category&amp;action=edit&id=<?php echo $category->id;?>">
+				   <?php echo $category->name;?></a>
+				</td>
 				<td>
 				  <a class="del" href="admin.php?controller=category&amp;action=delete&amp;id=<?php echo $category->id;?>">Xóa</a>
 				</td>

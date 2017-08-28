@@ -5,7 +5,7 @@
  {
     protected $conn;
 
-    public abstract function createConnection();
+    protected abstract function createConnection();
 
     public function closeConnection()
     {
@@ -33,6 +33,9 @@
         		break;
         	case enum\DaoEnum::USER:
                 $baseDao = new UserDaoImpl($this->conn);
+                break;
+            case enum\DaoEnum::FOOD:
+                $baseDao = new FoodDaoImpl($this->conn);
         		break;
         }
         return $baseDao;

@@ -10,11 +10,9 @@ class Food
   	private $image;
   	private $detail;
 
-  	public function __construct($name, $category_id, $price)
+  	public function __construct()
     {
-  		  $this->name = $name;
-  		  $this->categoryI_id = $category_id;
-  		  $this->price = $price;
+  		  
   	}
 
   	public function __get($property)

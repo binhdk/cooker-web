@@ -1,54 +1,68 @@
 <?php
-//load model
-require_once('dao/MonAnDao.class.php');
-require_once('dao/DanhMucDao.class.php');
-require_once 'utils/upload_image.php';
-
-
 // nếu chọn sửa/thêm 
 if (!empty($_POST)) {
-	$tenmonan = mysql_real_escape_string($_POST['tenmonan']);
+	  $name = ($_POST['name']);
 
-	$monan = array(
-		'tenmonan' => $tenmonan,
-		'id_loai' => intval($_POST['id_loai']),
-    'thanhphan'=>mysql_real_escape_string($_POST['thanhphan']),
-    'gia' => doubleval(str_replace('.', '',$_POST['gia'])),
-    'mota'=>$_POST['mota'],
-		'id_monan' => intval($_POST['id_monan'])
-	);
-    if($monan['id_monan']){
-      $id_monan=$monan['id_monan'];
-      $sql='update monan set tenmonan=?, id_loai=?,thanhphan=?,gia=?,mota=?  where id_monan=?';
-       MonAnDao::suaMonAn($sql,$monan);
-   }
-   else  $id_monan=MonAnDao::themMonAn($monan);
+	  $food = array(
+		    'name' => $tenmonan,
+		    'categoryDao' => intval($_POST['category_id']),
+        'component'=>($_POST['component']),
+        'price' => doubleval(str_replace('.', '',$_POST['price'])),
+        'detail'=>$_POST['detail'],
+		    'id' => intval($_POST['id'])
+	  );
+        if($food['id']){
+            $isEdit = $foodDao->editFood($food);
+            if($isEdit == 1) {
+                echo "<script>window.alert(' Update success');";
+                echo "window.location.href= 'admin.php?controller=food';";
+                echo "</script>";
+                   
+            } else {
+                echo "<script>window.alert(' Update fail, please do later');";
+                echo "window.location.href= 'admin.php?controller=food';";
+                echo "</script>";
+            }
+        } else {
+            $id = $foodDao->addFood($food);
+            if($id == 1) {
+                echo "<script>window.alert(' Add success');";
+                echo "window.location.href= 'admin.php?controller=category';";
+                echo "</script>";
+            } else {
+                echo "<script>window.alert(' add fail, please do later');";
+                echo "window.location.href= 'admin.php?controller=category';";
+                echo "</script>";
+            }
+        } 
 
 	//upload ảnh
-   $tenhinh=alias($tenmonan);
+    $image=alias($name);
     $config = array(
-      'name' => $tenhinh,
-        'upload_path'  => 'uploads/',
+        'name' => $image,
+        'upload_path'  => 'assets/updoads/',
         'allowed_exts' => 'jpg|jpeg|png|gif',
-    );
+        );
 
-    $hinhanh = upload('hinhanh', $config);
+    $image = upload('image', $config);
     
     // cập nhật ảnh mới
-    if($hinhanh){
-    	$monan = array(
-    		'hinhanh' => $hinhanh,
-        'id_monan' => $id_monan
-    	);
-    	 MonAnDao::suaMonAn("update monan set hinhanh=? where id_monan=? ",$monan);
+    if($image){
+    	  $food = array(
+    		    'image' => $image,
+            'id' => $id
+    	      );
+    	 $foodDao->editFood($food);
     }
-	header('location:admin.php?controller=monan');
+	header('location:admin.php?controller=food');
 }
 
-if (isset($_GET['id'])) $id = intval($_GET['id']); else $id=0;
-$title = ($id==0) ? 'Thêm món ăn' : 'Sửa món ăn';
+$foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
+$categoryDao = $factory->getDao(utils\enum\DaoEnum::CATEGORY);
+if (isset($_GET['id'])) $id = intval($_GET['id']); else $id = 0;
+$title = ($id == 0) ? 'Thêm món ăn' : 'Sửa món ăn';
 $user = $_SESSION['user'];
-$monan = MonAnDao::xemMonAn($id);
-$danhmuc = DanhMucDao::xemDS();
+$food = $foodDao->getFood($id) != null ? $foodDao->getFood($id)[0] : null;
+$category = $categoryDao->getAll();
 //load view
-require('views/admin/monan/sua.php');
+require('admin/view/food/edit.php');

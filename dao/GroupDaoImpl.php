@@ -2,7 +2,11 @@
 namespace dao;
 class GroupDaoImpl implements GroupDao
 {
-	
+    public function __construct($conn)
+    {
+        parent::__construct($conn);
+    }
+    
    	public function getGroup($id)
     {
         $group = $this->get("select * from groups where id=?", $id);

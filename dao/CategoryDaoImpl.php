@@ -17,28 +17,32 @@ class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao
 
     public function getCategory($id)
     {
-        $category = $this->get("select * from category where id=?", $id);
+        $category = $this->get("select * from category where id=?", array($id));
         return $this->resultSetToModel($category, 'model\Category');
     }
 
     public function delCategory($id)
     {
-        $isDelete = $this->del("delete from category where id=?", $id);
+        $isDelete = $this->del("delete from category where id=?", array($id));
         return $isDelete;
     }
 
     public function editCategory($category)
     {
-        $sql = "update category set name=? where id=?";
-        $isEdit = $this->edit($sql, $category);
+        $sql = "update category set name=?, status=? where id=?";
+        $isEdit = $this->edit($sql, array($category->name, $category->status, $category->id));
         return $isEdit;
     }
 
     public function addCategory($category)
     {
-        $sql = "insert into category values(?,?)";
-        $isAdd = $this->add($sql, $category);
+        $sql = "insert into category (name,status) values(?,?)";
+        $isAdd = $this->add($sql,
+                array(
+                    $category->__get('name'),
+                    $category->__get('status')
+                ));
         return $isAdd;
     }
 }
- ?>
+?>

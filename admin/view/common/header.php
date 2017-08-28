@@ -7,3 +7,4 @@
     <link href="public/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="public/css/admin.css" rel="stylesheet"/>
 </head>
+<body>

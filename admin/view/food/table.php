@@ -29,7 +29,7 @@
 			<input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm"/>
 		</div>
 
-		<a href="admin.php?controller=food&action=sua" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
+		<a href="admin.php?controller=food&action=edit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Thêm mới</a>
 	</div>
 
 	<table class="table table-bordered table-hover">
@@ -43,25 +43,27 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($monan as $item): ?>
+			<?php foreach ($listFood as $food): ?>
 			<tr>
 				<td>
-					<input name="id[]" type="checkbox" value="<?php echo $item['id_monan'];?>"/>
+					<input name="id[]" type="checkbox" value="<?php echo $food->id;?>"/>
 				</td>
-				<td><?php echo $item['id_monan'];?></td>
+				<td><?php echo $food->id;?></td>
 				<td>
 					<?php
-					$hinhanh = 'assets/uploads/'.$item['hinhanh'];
-					if (is_file($hinhanh)) {
-                        echo '<image src="'.$hinhanh.'" style="max-width:50px; max-height:50px;" />';
+					$image = 'assets/uploads/' . $food->image;
+					if (is_file($image)) {
+                        echo '<image src="'.$image.'" style="max-width:50px; max-height:50px;" />';
                     }
                     ?>
                 </td>
 				<td>
-					<a href="admin.php?controller=food&action=sua&id=<?php echo $item['id_monan'];?>"><?php echo $item['tenmonan'];?></a>
+					<a href="admin.php?controller=food&action=edit&id=<?php echo $food->id;?>">
+					<?php echo $food->name;?></a>
 				</td>
 				<td>
-					<a class="del" href="admin.php?controller=food&action=xoa&id=<?php echo $item['id_monan'];?>"><i class="glyphicon glyphicon-remove"></i></a>
+					<a class="del" href="admin.php?controller=food&action=delete&id=<?php echo $food->id;?>">
+					<i class="glyphicon glyphicon-remove"></i></a>
 				</td>
 			</tr>
 			<?php endforeach; ?>

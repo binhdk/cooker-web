@@ -13,13 +13,9 @@
         <div class="panel panel-default">
           <div class="panel-heading"><i class="glyphicon glyphicon-th-list"></i> Danh mục sản phẩm</div>
             <div class="panel-body">
-              <form id="category-form" class="form-horizontal" method="post" action="admin.php?controller=category&action=edit" enctype="multipart/form-data" role="form">
-                <div class="form-group">
-                  <label for="name" class="col-sm-3 control-label">ID loại</label>
-                  <div class="col-sm-2">
-                    <input name="id" type="number" value="<?php echo $category ? $category->id : '0'; ?>"  class="form-control" disabled/>
-                  </div>
-                </div>
+              <form id="category-form" class="form-horizontal" method="post"
+              action="admin.php?controller=category&action=edit" enctype="multipart/form-data" role="form">
+              <input name="id" type="hidden" value="<?php echo $category ? $category->id : '0'; ?>"/>
                 <div class="form-group">
                   <label for="name" class="col-sm-3 control-label">Tên danh mục</label>
                   <div class="col-sm-9">
@@ -27,7 +23,12 @@
                   </div>
                   <label for="status" class="col-sm-3 control-label">Trạng thái</label>
                   <div class="col-sm-1">
-                    <input name="status" type="checkbox" value="" class="form-control" id="status" required="" <?php echo $category->status == 1 ? "checked" : null;  ?>/>
+                    <input type="hidden" name="status" value="0" />
+                    <input name="status" type="checkbox" value="1" class="form-control" id="status" <?php
+                        if (!empty($category))
+                          echo $category->status == 1 ? "checked" : null;
+                      ?>
+                    />
                   </div>
                 </div>                   
                 <div class="form-group">
