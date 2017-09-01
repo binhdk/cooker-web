@@ -1,6 +1,6 @@
 <?php 
 namespace dao;
- class OrderDaoImpl extends BaseDaoImpl implements OrderDao
+ class OrderDaoImpl extends BaseDaoImpl
  {
     public function __construct($conn)
     {

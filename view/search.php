@@ -1,25 +1,25 @@
 <div class="container">    
   <div class="row">
     <?php
-      foreach($monan as $m){
+      foreach($foods as $food){
     ?>
     <div class="col-sm-4">
       <div class="panel panel-primary">
                  
       <div class="panel-heading" style="text-align: center;"> 
         <?php
-          echo $m['tenmonan'] ;
+          echo $food->id;
           echo "<br/>";
-          echo $m['gia'];echo 'đ';
+          echo $food->price;echo 'đ';
         ?> 
       </div>
       <div class="panel-body">
-        <a href="index.php?action=chitietmonan&id=<?php echo $m['id_monan']?>">
-          <img src="assets/uploads/<?php echo $m['hinhanh']?>" class="img-responsive" style="width:100%" alt="Image">
+        <a href="index.php?view=food-detail&id=<?php echo $food->id;?>">
+          <img src="assets/uploads/<?php echo $food->image; ?>" class="img-responsive" style="width:100%" alt="Image">
         </a>
       </div>
       <div class="panel-footer">
-        <a href="index.php?action=giohang&id=<?php echo  $m['id_monan'] ?>">Mua nguyên liệu</a>
+        <a href="index.php?view=cart&id=<?php echo  $food->id ?>">Mua nguyên liệu</a>
       </div>
       </div>
     </div>

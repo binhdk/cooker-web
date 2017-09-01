@@ -1,6 +1,5 @@
 <?php
-// call model 
-use dao;
+
 if (isset($_POST['id_donhang'])) {
 	$donhang = array(
 		'trangthai' =>'1',

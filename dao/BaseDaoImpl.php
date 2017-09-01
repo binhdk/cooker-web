@@ -1,7 +1,7 @@
 <?php 
 namespace dao;
 use \PDO;
-class BaseDaoImpl implements BaseDao
+class BaseDaoImpl
 {
   	private $conn;
     

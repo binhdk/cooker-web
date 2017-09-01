@@ -1,16 +1,21 @@
 <?php
 session_start();
 require_once 'config.php';
-require_once 'utils\function.php';
+require_once 'utils/pagination.php';
 require_once 'utils/upload_image.php';
 require_once 'AutoLoad.php';
-new AutoLoad;
+
 use dao as dao;
 use model as model;
-use utils\enum as enum;
+use utils\enum\FactoryEnum as FactoryEnum;
+use utils\enum\DaoEnum as DaoEnum;
+
 use dao\AbstractDaoFactory as Factory;
 
-$factory = Factory::getDaoFactory(enum\FactoryEnum::MYSQL);
+new AutoLoad;
+
+$factory = Factory::getDaoFactory(FactoryEnum::MYSQL);
+
 if(isset($_GET['controller']))
     $controller = $_GET['controller'];
 else 

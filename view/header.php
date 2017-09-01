@@ -29,12 +29,11 @@
                     Thực đơn <span class="caret"></span></a>
           <ul class="dropdown-menu"  role="menu">
             <?php
-              include_once('dao/DanhMucDao.class.php');
-              $tendanhmuc = DanhMucDao::xemDS();
-              foreach($tendanhmuc as $d){
+              $categories = $factory->getDao(utils\enum\DaoEnum::CATEGORY)->getAll();
+              foreach($categories as $category){
               ?>
-            <li><a href="index.php?action=chitietloaimonan&id=<?php echo $d['id_loai']; ?>">
-              <?php echo $d['tenloai'] ;?>
+            <li><a href="index.php?view=food-detail&id=<?php echo $category->id; ?>">
+              <?php echo $category->name;?>
               </a>
             </li>
               <?php  } ?>
@@ -44,9 +43,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
             Gợi ý <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=goiy&id=2">2 người ăn</a> </li>
-            <li><a href="index.php?action=goiy&id=3">3 người ăn</a> </li>
-            <li><a href="index.php?action=goiy&id=4">4 người ăn</a> </li>
+            <li><a href="index.php?view=suggest-food&id=2">2 người ăn</a> </li>
+            <li><a href="index.php?view=suggest-food&id=3">3 người ăn</a> </li>
+            <li><a href="index.php?view=suggest-food&id=4">4 người ăn</a> </li>
             <li><a href="#">khác...</a> </li>
           </ul>
           </li>
@@ -54,17 +53,17 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
             Sức khỏe <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=suckhoe&id=2">Ăn Kiêng</a> </li>
-            <li><a href="index.php?action=suckhoe&id=3">Thực Phẩm An Toàn</a> </li>
-            <li><a href="index.php?action=suckhoe&id=4">Thực Đơn Giảm Cân</a> </li>
+            <li><a href="index.php?view=health-news&id=2">Ăn Kiêng</a> </li>
+            <li><a href="index.php?view=health-news&id=3">Thực Phẩm An Toàn</a> </li>
+            <li><a href="index.php?view=health-news&id=4">Thực Đơn Giảm Cân</a> </li>
           </ul>
         </li>
       </ul>
       
       <!-- search form start -->
-      <form class="navbar-form navbar-left"  method="post"  action="index.php?action=timkiem">
+      <form class="navbar-form navbar-left"  method="post"  action="index.php?view=search">
         <div class="input-group">
-          <input type="text" name="textTimKiem" id="timKiem" class="form-control" placeholder="Tìm kiếm">
+          <input type="text" name="search" id="search" class="form-control" placeholder="Tìm kiếm">
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit">
               <i class="glyphicon glyphicon-search"></i>
@@ -77,7 +76,7 @@
       <!-- login component start -->
       <ul class="nav navbar-nav navbar-right">
         <li><?php require('view/login.php') ?>  </li>
-        <li><a href="index.php?action=giohang"><span class="glyphicon glyphicon-shopping-cart">
+        <li><a href="index.php?view=cart"><span class="glyphicon glyphicon-shopping-cart">
         </span>  Giỏ hàng</a></li>
       </ul>
       <!-- login component end -->

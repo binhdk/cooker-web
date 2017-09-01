@@ -1,8 +1,10 @@
 <?php 
- namespace dao;
- use utils\enum as enum;
- abstract class AbstractDaoFactory
- {
+namespace dao;
+use utils\enum\FactoryEnum as FactoryEnum;
+use utils\enum\DaoEnum as DaoEnum;
+
+abstract class AbstractDaoFactory
+{
     protected $conn;
 
     protected abstract function createConnection();
@@ -16,25 +18,25 @@
 	{
 		$baseDao = null;
         switch ($type) {
-        	case enum\DaoEnum::CATEGORY:
+        	case DaoEnum::CATEGORY:
         		$baseDao = new CategoryDaoImpl($this->conn);
         		break;
-        	case enum\DaoEnum::CUSTOMER:
+        	case DaoEnum::CUSTOMER:
                 $baseDao = new CustomerDaoImpl($this->conn);
         		break;
-        	case enum\DaoEnum::GROUP:
+        	case DaoEnum::GROUP:
                 $baseDao = new GroupDaoImpl($this->conn);
         		break;
-        	case enum\DaoEnum::ORDER:
+        	case DaoEnum::ORDER:
                 $baseDao = new OrderDaoImpl($this->conn);
         		break;
-        	case enum\DaoEnum::ORDER_DETAIL:
+        	case DaoEnum::ORDER_DETAIL:
                 $baseDao = new OerderDetailImpl($this->conn);
         		break;
-        	case enum\DaoEnum::USER:
+        	case DaoEnum::USER:
                 $baseDao = new UserDaoImpl($this->conn);
                 break;
-            case enum\DaoEnum::FOOD:
+            case DaoEnum::FOOD:
                 $baseDao = new FoodDaoImpl($this->conn);
         		break;
         }
@@ -45,16 +47,16 @@
 	{
         $factory = null;
         switch ($factoryType) {
-            case enum\FactoryEnum::MSSQL:
+            case FactoryEnum::MSSQL:
                 # code...
                 break;
-            case enum\FactoryEnum::MYSQL:
+            case FactoryEnum::MYSQL:
                 $factory = MySQLDaoFactory::getInstance();
                 break;
-            case enum\FactoryEnum::SQLITE:
+            case FactoryEnum::SQLITE:
                 
                 break;
-            case enum\FactoryEnum::ORACLE:
+            case FactoryEnum::ORACLE:
                 
                 break;
             default:
@@ -63,6 +65,18 @@
         }
         return $factory;
 	}
+    // public static function connectSQLite($databaseFile)
+    // {
+    //     $connString="sqlite:" . __DIR__ . DIRECTORY_SEPARATOR . $databaseFile;
+    //     try
+    //     {
+    //         $con = new PDO ($connString);
+    //         $con->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //         return $con;
+    //     } catch (PDOException $e) {
+    //         die ("Cannot connect to server\n");
+    //     }
+    // }
 
- }
+}
 ?>

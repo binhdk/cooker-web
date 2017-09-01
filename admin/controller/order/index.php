@@ -1,8 +1,4 @@
 <?php
-//load model
-	require_once 'utils/function.php';
-require_once('dao/DonHangDao.class.php');
-require_once('dao/UserDao.class.php');
 if(isset($_GET['page'])) 
     	$page=intval($_GET['page']);
     else 

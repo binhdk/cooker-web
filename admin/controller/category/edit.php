@@ -1,8 +1,4 @@
 <?php
-//load model
-use dao as dao;
-use model\Category;
-use utils\enum as enum;
 
 $factory = dao\AbstractDaoFactory::getDaoFactory(enum\FactoryEnum::MYSQL);
 $categoryDao = $factory->getDao(enum\DaoEnum::CATEGORY);

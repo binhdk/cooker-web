@@ -1,7 +1,6 @@
 <?php 
 namespace dao;
-require_once 'AutoLoad.php';
-class UserDaoImpl extends BaseDaoImpl implements UserDao
+class UserDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
     {
@@ -16,8 +15,8 @@ class UserDaoImpl extends BaseDaoImpl implements UserDao
 
     public function getUserWithEmail($email)
     {
-        $user = $this->get("select * from user where email=?", $email);
-        return $this->resultSetToModel($user, 'model\User');
+        $user = $this->get("select * from user where email=?", array($email));
+        return $this->resultSetToModel($user, 'model\User')[0];
     }
 
     public function getAll()

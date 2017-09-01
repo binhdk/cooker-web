@@ -1,6 +1,6 @@
 <?php 
 namespace dao;
-class FoodDaoImpl extends BaseDaoImpl implements FoodDao
+class FoodDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
     {

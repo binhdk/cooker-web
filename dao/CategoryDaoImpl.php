@@ -1,7 +1,6 @@
 <?php 
 namespace dao;
-use model;
-class CategoryDaoImpl extends BaseDaoImpl implements CategoryDao
+class CategoryDaoImpl extends BaseDaoImpl
 {
 
     public function __construct($conn)

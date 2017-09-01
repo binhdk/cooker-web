@@ -1,8 +1,7 @@
 <?php
-//call model
-require_once 'utils/function.php';
-use dao as dao;
-use utils\enum as enum;
+use utils\enum\FactoryEnum as FactoryEnum;
+use utils\enum\DaoEnum as DaoEnum;
+
 if(isset($_GET['page'])) {
     $page = intval($_GET['page']);
 }
@@ -13,8 +12,8 @@ else {
 $page = ($page > 0) ? $page : 1;
 $limit = 5;
 $offset = ($page-1)*$limit;
-$factory = dao\AbstractDaoFactory::getDaoFactory(enum\FactoryEnum::MYSQL);
-$categoryDao = $factory->getDao(enum\DaoEnum::CATEGORY);
+$factory = dao\AbstractDaoFactory::getDaoFactory(FactoryEnum::MYSQL);
+$categoryDao = $factory->getDao(DaoEnum::CATEGORY);
 
 $sql = "select * from category LIMIT " . $offset . ", " . $limit;
 $total_rows = count($categoryDao->getAll());

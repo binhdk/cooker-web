@@ -1,6 +1,6 @@
 <?php 
 namespace dao;
-class GroupDaoImpl implements GroupDao
+class GroupDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
     {
