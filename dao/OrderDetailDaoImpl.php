@@ -1,5 +1,6 @@
 <?php
 namespace dao;
+use utils\enum\TableEnum as Table;
 class OrderDetailDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
@@ -7,35 +8,33 @@ class OrderDetailDaoImpl extends BaseDaoImpl
         parent::__construct($conn);
     }
 
-    public function getAll()
+    public function getAll($options = array())
     {
-        $list = $this->get("select * from order_detail",null);
-        return $list;
+        $orderDetails = $this->get(Table::ORDER_DETAIL, $options);
+        return $orderDetails;
     }
 
-    public function getOrderDetail($id)
+    public function getOrderDetail($options = array())
     {
-        $orderDetail = $this->get("select * from order_detail where id=?", $id);
-        return $orderDetail;
+        $orderDetails = $this->get(Table::ORDER_DETAIL, $options);
+        return reset($orderDetails);
     }
 
-    public function addOrderDetail($orderDetail)
+    public function addOrderDetail($orderDetail = array())
     {
-        $sql = "insert into order_detail values(?,?)";
-        $isAdd = $this->add($sql, $orderDetail);
+        $isAdd = $this->add(Table::ORDER_DETAIL, $orderDetail);
         return $isAdd;
     }
 
-    public function delOrderDetail($id)
+    public function delOrderDetail($where = array())
     {
-        $isDelete = $this->del("delete from order_detail where id=?", $id);
+        $isDelete = $this->del(Table::ORDER_DETAIL, $where);
         return $isDelete;
     }
 
-    public function editOrderDetail($orderDetail)
+    public function editOrderDetail($orderDetail = array())
     {
-        $sql = "update order_detail set name=? where id=?";
-        $isEdit = $this->edit($sql, $orderDetail);
+        $isEdit = $this->edit(Table::ORDER_DETAIL, $orderDetail);
         return $isEdit;
     }
 } 

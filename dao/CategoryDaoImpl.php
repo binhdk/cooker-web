@@ -1,47 +1,41 @@
 <?php 
 namespace dao;
+use utils\enum\TableEnum as Table;
 class CategoryDaoImpl extends BaseDaoImpl
 {
-
     public function __construct($conn)
     {
         parent::__construct($conn);
     }
 
-    public function getAll()
+    public function getCategories($options = array())
     {
-        $list = $this->get("select * from category", null);
-        return $this->resultSetToModel($list, 'model\Category');
+        $categories = $this->get(Table::CATEGORY, $options);
+        return $categories;
     }
 
-    public function getCategory($id)
+    public function getCategory($options = array())
     {
-        $category = $this->get("select * from category where id=?", array($id));
-        return $this->resultSetToModel($category, 'model\Category');
+        $categories = $this->get(Table::CATEGORY, $options);
+        return reset($categories);
     }
 
-    public function delCategory($id)
+    public function delCategory($options = array())
     {
-        $isDelete = $this->del("delete from category where id=?", array($id));
-        return $isDelete;
+        $rowDeleted = $this->del(Table::CATEGORY, $options);
+        return $rowDeleted;
     }
 
-    public function editCategory($category)
+    public function editCategory($category = array())
     {
-        $sql = "update category set name=?, status=? where id=?";
-        $isEdit = $this->edit($sql, array($category->name, $category->status, $category->id));
-        return $isEdit;
+        $rowEdited = $this->edit(Table::CATEGORY, $category);
+        return $rowEdited;
     }
 
-    public function addCategory($category)
+    public function addCategory($category = array())
     {
-        $sql = "insert into category (name,status) values(?,?)";
-        $isAdd = $this->add($sql,
-                array(
-                    $category->__get('name'),
-                    $category->__get('status')
-                ));
-        return $isAdd;
+        $isAdded = $this->add($sql, $category);
+        return $isAdded;
     }
 }
 ?>

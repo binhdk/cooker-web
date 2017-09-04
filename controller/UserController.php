@@ -11,22 +11,18 @@ class UserController
 
         $factory = dao\AbstractDaoFactory::getDaoFactory(FactoryEnum::MYSQL);
         $userDaoImpl = $factory->getDao(DaoEnum::USER);
-        $user = new model\User;
-        $user = $userDaoImpl->getUserWithEmail($email);
-        
-        // echo "<script>console.log('". $user->id . "');</script>";
+        $options = array('where' => "email='$email'");
+        $user = $userDaoImpl->getUser($options);
         if ($user != null) {
-            $password_hash = $user->__get('password');
+            $password_hash = $user->password;
             $check=password_verify($password,$password_hash);
             if ($check == 1) {
-                $user_session = array(
-                'id'=>$user->id,
-                'email'=>$user->email,
-                'name'=>$user->name,
-                'tel'=>$user->tel,
-                'address'=>$user->diachi
+                $userSession = array(
+                    'id'=>$user->id,
+                    'email'=>$user->email,
+                    'name'=>$user->name
                 );
-                $_SESSION['user'] =$user_session;
+                $_SESSION['user'] =$userSession;
                 header('location:.');
             } else {
                   echo '<script>alert("Wrong email or password!");</script>';

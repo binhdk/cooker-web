@@ -1,5 +1,6 @@
 <?php 
 namespace dao;
+use utils\enum\TableEnum as Table;
 class UserDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
@@ -7,37 +8,31 @@ class UserDaoImpl extends BaseDaoImpl
         parent::__construct($conn);
     }
 
-    public function getUser($id)
+    public function getUser($options)
     {
-        $user = $this->get("select * from user where id=", $id);
-        return $user;
+        $user = $this->get(Table::USER, $options);
+        return reset($user);
     }
 
-    public function getUserWithEmail($email)
+    public function getAll($options)
     {
-        $user = $this->get("select * from user where email=?", array($email));
-        return $this->resultSetToModel($user, 'model\User')[0];
-    }
-
-    public function getAll()
-    {
-        $list = $this->get("select * from user", null);
-        return $list;
+        $users = $this->get(Table::USER, $options);
+        return $users;
     }
 
     public function editUser($user)
     {
-    	$sql = "update user set ";
-        $this->edit($sql, get_object_vars($user));
+        $users = $this->edit(Table::USER, $user);
+        return reset($user);
     }
 
-    public function addUser($user){
-    	$sql = "insert into user value(?,?,?,?,?,?,?,?,?,?)";
-        return $this->add($sql, get_object_vars($user));
+    public function addUser($user = array()){
+        
+        return $this->add(Table::USER, $user);
     }
 
-    public function delUser($id){
-        $this->del("delete from user where id=?", $id);
+    public function delUser($options = array()){
+       return $this->del(Table::USER, $options);
     }
 }
 

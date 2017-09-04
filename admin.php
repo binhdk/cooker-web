@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL & ~(E_NOTICE & E_WARNING));
 require_once 'config.php';
 require_once 'utils/pagination.php';
 require_once 'utils/upload_image.php';
@@ -35,6 +36,8 @@ $file = 'admin/controller/'.$controller.'/'.$action.'.php';
 if (file_exists($file)) {
     require($file);
 } else {
-    echo "error";
+    header('HTTP/1.1 Not Found 404', true, 404);
+    require(ABSPATH . '404.php');
+    exit();
 }
 ?>

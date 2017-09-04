@@ -26,5 +26,5 @@ $pagination = pagination($url, $page, $total_page);
 $foods = $foodDao->get("select * from food  where name like '%$search%' LIMIT $offset, $limit", null);
 
 // call view
-require_once 'views/component/search.php';
+require_once 'view/search.php';
 ?>

@@ -35,7 +35,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($categoryList as $category) : ?>
+			<?php foreach ($categories as $category) : ?>
 			<tr>
 				<td><input name="id[]" type="checkbox" value="<?php echo $category->id;?>"/></td>
 				<td><?php echo $category->id;?></td>

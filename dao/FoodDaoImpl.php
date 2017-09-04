@@ -1,5 +1,6 @@
 <?php 
 namespace dao;
+use utils\enum\TableEnum as Table;
 class FoodDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
@@ -7,44 +8,33 @@ class FoodDaoImpl extends BaseDaoImpl
         parent::__construct($conn);
     }
     
-	public function getFood($id)
+	public function getFood($options = array())
     {
-        $list = $this->get("select * from food where id=?", array($id));
-        return $this->resultSetToModel($list, 'model\Food');
+        $foods = $this->get(Table::FOOD, $options);
+        return reset($foods);
 	}
 
-    public function getAll()
+    public function getAll($options = array())
     {
-        $list = $this->get("select * from food", null);
-        return $this->resultSetToModel($list, 'model\Food');
+        $foods = $this->get(Table::FOOD, $options);
+        return $foods;
     }
 
-    public function addFood($food)
+    public function addFood($food = array())
     {
-        $sql = "insert into food values(?,?)";
-        $isAdd = $this->add($sql, $food);
+        $isAdd = $this->add(Table::FOOD, $food);
         return $isAdd;
     }
 
-    public function editFood($food)
+    public function editFood($food = array(), $options = array())
     {
-        $sql = "update food set name=?, category_id=?, price=?, component=?, image=?, detail=? where id=?";
-        $isEdit = $this->edit($sql,
-                            array(
-                                $food->__get('name'),
-                                $food->__get('category_id'),
-                                $food->__get('price'),
-                                $food->__get('component'),
-                                $food->__get('image'),
-                                $food->__get('detail'),
-                                $food->__get('id')
-                            ));
+        $isEdit = $this->edit(Table::FOOD, $food, $options);
         return $isEdit;
     }
 
-    public function delFood($id)
+    public function delFood($where = array())
     {
-    	$isDelete = $this->del("delete from food where id=?", array($id));
+    	$isDelete = $this->del(Table::FOOD, $where);
         return $isDelete;
     }
 

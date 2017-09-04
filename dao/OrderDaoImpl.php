@@ -1,5 +1,6 @@
 <?php 
 namespace dao;
+use utils\enum\TableEnum as Table;
  class OrderDaoImpl extends BaseDaoImpl
  {
     public function __construct($conn)
@@ -7,35 +8,33 @@ namespace dao;
         parent::__construct($conn);
     }
     
- 	public function getOrder($id)
+ 	public function getOrder($options = array())
  	{
-        $order = $this->get("select * from orders where id=?", $id);
-        return $order;     
+        $orders = $this->get(Table::ORDER,  $options);
+        return reset($orders);     
  	}
 
-    public function getAll()
+    public function getAll($options = array())
     {
-        $list = $this->get("select * from orders", null);
-        return $list;
+        $orders = $this->get(Table::ORDER, $options);
+        return $orders;
     }
 
-    public function addOrder($order)
+    public function addOrder($order = array())
     {
-        $sql = "insert into orders values(?,?)";
-        $isAdd = $this->add($sql, $order);
+        $isAdd = $this->add(Table::ORDER, $order);
         return $isAdd;
     }
 
-    public function editOrder($order)
+    public function editOrder($order = array())
     {
-        $sql = "update orders set name=? where id=?";
-        $isEdit = $this->edit($sql, $order);
+        $isEdit = $this->edit(Table::ORDER, $order);
         return $isEdit;
     }
 
-    public function delOrder($id)
+    public function delOrder($where = array())
     {
-    	$isDelete = $this->del("delete from orders where id=?", $id);
+    	$isDelete = $this->del(Table::ORDER, $where);
         return $isDelete;
     }
  }

@@ -32,7 +32,7 @@
               $categories = $factory->getDao(utils\enum\DaoEnum::CATEGORY)->getAll();
               foreach($categories as $category){
               ?>
-            <li><a href="index.php?view=food-detail&id=<?php echo $category->id; ?>">
+            <li><a href=".?view=food-detail&id=<?php echo $category->id; ?>">
               <?php echo $category->name;?>
               </a>
             </li>
@@ -53,7 +53,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
             Sức khỏe <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?view=health-news&id=2">Ăn Kiêng</a> </li>
+            <li><a href="health-news/2">Ăn Kiêng</a> </li>
             <li><a href="index.php?view=health-news&id=3">Thực Phẩm An Toàn</a> </li>
             <li><a href="index.php?view=health-news&id=4">Thực Đơn Giảm Cân</a> </li>
           </ul>
@@ -76,7 +76,7 @@
       <!-- login component start -->
       <ul class="nav navbar-nav navbar-right">
         <li><?php require('view/login.php') ?>  </li>
-        <li><a href="index.php?view=cart"><span class="glyphicon glyphicon-shopping-cart">
+        <li><a href="index.html?view=cart"><span class="glyphicon glyphicon-shopping-cart">
         </span>  Giỏ hàng</a></li>
       </ul>
       <!-- login component end -->

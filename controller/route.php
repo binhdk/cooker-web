@@ -17,7 +17,7 @@ if (isset($_GET['view'])) {
         case 'logout':
             unset($_SESSION['customer']);
             unset($_SESSION['cart']);
-            header("location:index.php");
+            header("location:.");
             break;
         case 'food-detail':
             require_once('view/food-detail.php');

@@ -1,5 +1,6 @@
 <?php
 namespace dao;
+use utils\enum\TableEnum as Table;
 class CustomerDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
@@ -7,35 +8,33 @@ class CustomerDaoImpl extends BaseDaoImpl
         parent::__construct($conn);
     }
 
-    public function getCustomer($id)
+    public function getCustomer($options = array())
     {
-        $customer = $this->get("select * from customer where id=?", $id);
-        return $customer;
+        $customers = $this->get(Table::CUSTOMER, $options);
+        return reset($customers);
     }
 
-    public function getAll()
+    public function getAll($options = array())
     {
-        $list = $this->get("select * from customer", null);
-        return $list;
+        $customers = $this->get(Table::CUSTOMER, $options);
+        return $customers;
     }
 
-    public function addCustomer($customer)
+    public function addCustomer($customer = array())
     {
-        $sql = "insert into customer values(?,?)";
-        $isAdd = $this->add($sql, $customer);
+        $isAdd = $this->add(Table::CUSTOMER, $customer);
         return $isAdd;
     }
 
-    public function editCustomer($customer)
+    public function editCustomer($customer = array())
     {
-        $sql = "update customer set name=? where id=?";
-        $isEdit = $this->edit($sql, $customer);
+        $isEdit = $this->edit(Table::CUSTOMER, $customer);
         return $isEdit;
     }
 
-    public function delCustomer($id)
+    public function delCustomer($where = array())
     {
-    	$isDelete = $this->del("delete from customer where is=?", $id);
+    	$isDelete = $this->del(Table::CUSTOMER, $where);
         return $isDelete;
     }
 } 

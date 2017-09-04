@@ -1,5 +1,6 @@
 <?php 
 namespace dao;
+use utils\enum\TableEnum as Table;
 class GroupDaoImpl extends BaseDaoImpl
 {
     public function __construct($conn)
@@ -7,35 +8,34 @@ class GroupDaoImpl extends BaseDaoImpl
         parent::__construct($conn);
     }
     
-   	public function getGroup($id)
+   	public function getGroup($options = array())
     {
-        $group = $this->get("select * from groups where id=?", $id);
-        return $group;
+        $groups = $this->get(Table::GROUP, $options);
+        return reset($groups);
    	}
-   	public function getAll()
+    
+   	public function getAll($options = array())
     {
-        $list = $this->get("select * from groups",null);
+        $list = $this->get(Table::GROUP, $options );
         return $list;
         
    	}
 
-    public function addGroup($group)
+    public function addGroup($group = array())
     {
-        $sql = "insert into groups values(?,?)";
-        $isAdd = $this->add($sql, $group);
+        $isAdd = $this->add(Table::GROUP, $group);
         return $isAdd;
     }
 
-    public function editGroup($group)
+    public function editGroup($group = array())
     {
-        $sql = "update groups set name=? where id=?";
-        $isEdit = $this->edit($sql, $group);
+        $isEdit = $this->edit(Table::GROUP, $group);
         return $isEdit;
     }
 
-    public function delGroup($id)
+    public function delGroup($where = array())
     {
-        $isDelete = $this->del("delete from groups where id=?", $id);
+        $isDelete = $this->del(Table::GROUP, $where);
         return $isDelete;
     }
 }

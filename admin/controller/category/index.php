@@ -11,16 +11,15 @@ else {
     	
 $page = ($page > 0) ? $page : 1;
 $limit = 5;
-$offset = ($page-1)*$limit;
+$offset = ($page-1) * $limit;
 $factory = dao\AbstractDaoFactory::getDaoFactory(FactoryEnum::MYSQL);
 $categoryDao = $factory->getDao(DaoEnum::CATEGORY);
 
-$sql = "select * from category LIMIT " . $offset . ", " . $limit;
-$total_rows = count($categoryDao->getAll());
+$total_rows = count($categoryDao->getCategories());
 $total_page = ceil($total_rows / $limit);
 $url = "admin.php?controller=category";
 $pagination = pagination($url, $page, $total_page);
-$categoryList = $categoryDao->get($sql, null);
+$categories = $categoryDao->getCategories(array('offset' => $offset, 'limit' => $limit));
 $title = 'Danh mục loại món ăn';
 $user = $_SESSION['user'];
 

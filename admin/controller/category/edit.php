@@ -1,13 +1,14 @@
 <?php
 
-$factory = dao\AbstractDaoFactory::getDaoFactory(enum\FactoryEnum::MYSQL);
-$categoryDao = $factory->getDao(enum\DaoEnum::CATEGORY);
+// $factory = dao\AbstractDaoFactory::getDaoFactory(enum\FactoryEnum::MYSQL);
+$categoryDao = $factory->getDao(utils\enum\DaoEnum::CATEGORY);
 if (!empty($_POST)) {
-	$category = new model\Category;
-	$category->__set('id', $_POST['id']);
-	$category->__set('name', $_POST['name']);
-	$category->__set('status', $_POST['status']);
-	if ($category->__get('id')) {
+	$category = array(
+		    'id' => intval($_POST['id']),
+            'name' => $_POST['name'],
+            'status' => $_POST['status']
+		);
+	if ($category['id']) {
 	    $isEdit = $categoryDao->editCategory($category);
 	    if($isEdit == 1) {
 		    echo "<script>window.alert(' Update success');";
@@ -22,7 +23,7 @@ if (!empty($_POST)) {
 	    }
 	} else {
 		$isAdd = $categoryDao->addCategory($category);
-		if($isAdd == 1) {
+		if($isAdd >0) {
 		    echo "<script>window.alert(' Add success');";
             echo "window.location.href= 'admin.php?controller=food';";
 		    echo "</script>";
@@ -38,7 +39,8 @@ if (!empty($_POST)) {
 if (isset($_GET['id'])) $id = intval($_GET['id']); else $id = 0;
 $title = ($id == 0) ? 'Thêm loại' : 'Sửa loại';
 $user = $_SESSION['user'];
-$category = $categoryDao->getCategory($id) != null ? $categoryDao->getCategory($id)[0] : null;
+$category = $categoryDao->getCategory(array('id' => $id)) != null ?
+  $categoryDao->getCategory(array('id' => $id)) : null;
 //load view
 require('admin/view/category/edit.php');
 

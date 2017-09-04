@@ -21,7 +21,7 @@
 <div class="center"> 
   <?php
   // call controller handling
-    include_once('controller/index.php');
+    include_once('controller/route.php');
   ?>
 </div>
 

@@ -8,7 +8,7 @@
                  
       <div class="panel-heading" style="text-align: center;"> 
         <?php
-          echo $food->id;
+          echo $food->name;
           echo "<br/>";
           echo $food->price;echo 'đ';
         ?> 

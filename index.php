@@ -3,7 +3,6 @@ require_once 'config.php';
 require_once 'utils/pagination.php';
 require_once 'utils/upload_image.php';
 require_once 'AutoLoad.php';
-
 ob_start();
 session_start();
 
