@@ -17,7 +17,7 @@ class OrderDetailDaoImpl extends BaseDaoImpl
     public function getOrderDetail($options = array())
     {
         $orderDetails = $this->get(Table::ORDER_DETAIL, $options);
-        return reset($orderDetails);
+         return reset($orderDetails) === false ? null : reset($orderDetails);
     }
 
     public function addOrderDetail($orderDetail = array())

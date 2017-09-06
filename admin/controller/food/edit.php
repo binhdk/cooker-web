@@ -19,35 +19,35 @@ if (!empty($_POST)) {
     if($id > 0) {
         $rowEdited = $foodDao->editFood($food);
         if($rowEdited > 0) {
-            echo "<script>window.alert(' Update success');";
-            echo "window.location.href= 'admin.php?controller=food';";
+            echo "<script>window.alert('Update success');";
+            // echo "window.location.href='admin.php?controller=food';";
             echo "</script>";
                
         } else {
             echo "<script>window.alert(' Update fail, please do later');";
-            echo "window.location.href= 'admin.php?controller=food';";
+            // echo "window.location.href= 'admin.php?controller=food';";
             echo "</script>";
         }
     } else {
         $id = $foodDao->addFood($food);
         if($id > 0) {
-            echo "<script>window.alert(' Add success');";
-            echo "window.location.href= 'admin.php?controller=food';";
+            echo "<script>window.alert('Add success');";
+            // echo "window.location.href='admin.php?controller=food';";
             echo "</script>";
         } else {
             echo "<script>window.alert(' add fail, please do later');";
-            echo "window.location.href= 'admin.php?controller=food';";
+            // echo "window.location.href= 'admin.php?controller=food';";
             echo "</script>";
         }
     } 
 
 	//upload ảnh
-    $image=alias($name);
+    $imageName = $id . '-' . alias($name);
     $config = array(
-        'name' => $image,
+        'name' => $imageName,
         'upload_path'  => 'assets/updoads/',
-        'allowed_exts' => 'jpg|jpeg|png|gif',
-        );
+        'allowed_exts' => 'jpg|jpeg|png|gif'
+    );
 
     $image = upload('image', $config);
     
@@ -59,7 +59,7 @@ if (!empty($_POST)) {
     	);
     	$foodDao->editFood($food);
     }
-	header('location:admin.php?controller=food');
+	// header('location:admin.php?controller=food');
 }
 
 if (isset($_GET['id'])) $id = intval($_GET['id']); else $id = 0;

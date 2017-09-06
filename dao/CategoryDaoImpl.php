@@ -17,7 +17,7 @@ class CategoryDaoImpl extends BaseDaoImpl
     public function getCategory($options = array())
     {
         $categories = $this->get(Table::CATEGORY, $options);
-        return reset($categories);
+        return reset($categories) === false ? null : reset($categories);
     }
 
     public function delCategory($options = array())

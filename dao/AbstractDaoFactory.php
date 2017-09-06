@@ -31,7 +31,7 @@ abstract class AbstractDaoFactory
                 $baseDao = new OrderDaoImpl($this->conn);
         		break;
         	case DaoEnum::ORDER_DETAIL:
-                $baseDao = new OerderDetailImpl($this->conn);
+                $baseDao = new OrderDetailDaoImpl($this->conn);
         		break;
         	case DaoEnum::USER:
                 $baseDao = new UserDaoImpl($this->conn);

@@ -4,12 +4,12 @@
     <form id="food-form" class="form-horizontal" method="post" action="admin.php?controller=food&action=edit" enctype="multipart/form-data" role="form">
       <input name="id" type="hidden" value="<?php echo $food ? $food->id : '0'; ?>"/>
       <div class="form-group">
-        <label for="id" class="col-sm-3 control-label">Loại</label>
+        <label for="category_id" class="col-sm-3 control-label">Loại</label>
         <div class="col-sm-9">
           <select name="category_id" class="form-control">
             <?php foreach ($categories as $category) {
                 $selected = '';
-                if ($food && ($food->id == $category->id)) $selected = 'selected=""';
+                if ($food && ($food->category_id == $category->id)) $selected = 'selected=""';
                 echo '<option value="' . $category->id . '" ' . $selected . '>' . $category->id . '</option>';
             } ?>
           </select>
@@ -36,10 +36,10 @@
       <div class="form-group">
         <label for="image" class="col-sm-3 control-label">Ảnh</label>
         <div class="col-sm-9">
-          <input name="image" type="file" class="form-control" id="price" accept="image/*"/>
+          <input name="image" type="file" class="form-control" id="image" accept="image/*"/>
             <?php 
                 if ($food && is_file('assets/uploads/' . $food->image)) {
-                    echo '<image src="assets/uploads/' . $food->image . '?time='.time().'" style="max-width:200px;" />';
+                    echo '<img src="assets/uploads/' . $food->image . '?time='.time().'" style="max-width:200px;" />';
                 }
             ?>
         </div>

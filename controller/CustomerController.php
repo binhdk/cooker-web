@@ -1,7 +1,6 @@
 <?php 
 namespace controller;
 use dao;
-use model;
 use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;
 class CustomerController
@@ -10,25 +9,23 @@ class CustomerController
     {
 
         $factory = dao\AbstractDaoFactory::getDaoFactory(FactoryEnum::MYSQL);
-        $customerDaoImpl = $factory->getDao(DaoEnum::CUSTOMER);
-        $customer = new model\Customer;
-        $customer = $customerDaoImpl->getcustomerWithEmail($email);
+        $customerDao = $factory->getDao(DaoEnum::CUSTOMER);
+        $customer = $customerDao->getCustomer(array('where' => "email='$email'"));
         
         if ($customer != null) {
-            $password_hash = $customer->__get('password');
-            $check=password_verify($password,$password_hash);
+            $password_hash = $customer->password;
+            $check = password_verify($password,$password_hash);
             if ($check == 1) {
                 $customer_session = array(
-                'id'=>$customer->id,
-                'email'=>$customer->email,
-                'name'=>$customer->name,
-                'tel'=>$customer->tel,
-                'address'=>$customer->diachi
+                    'id' => $customer->id,
+                    'email' => $customer->email,
+                    'name' => $customer->name,
+                    'tel' => $customer->tel,
+                    'address '=> $customer->address
                 );
-                $_SESSION['customer'] =$customer_session;
-                header('location:.');
+                $_SESSION['customer'] = $customer_session;
             } else {
-                  echo '<script>alert("Wrong email or password!");</script>';
+                  echo '<script>window.alert("Wrong email or password!");</script>';
             }
         } else {
               echo '<script>alert("Customer not exist");</script>';

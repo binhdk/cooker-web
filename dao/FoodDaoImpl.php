@@ -11,8 +11,8 @@ class FoodDaoImpl extends BaseDaoImpl
 	public function getFood($options = array())
     {
         $foods = $this->get(Table::FOOD, $options);
-        return reset($foods);
-	}
+        return reset($foods) === false ? null : reset($foods);
+    }
 
     public function getAll($options = array())
     {

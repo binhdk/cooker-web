@@ -1,21 +1,24 @@
 <?php
  // call dao
-  include('dao/MonAnDao.class.php');
-  if(isset($_GET['id'])) $id=$_GET['id'];
-  $m=MonAnDao::xemMonAn($id);
+if(isset($_GET['id']))
+    $id=$_GET['id'];
+$foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
+$food = $foodDao->getFood(array('where' => "id=$id"))
 ?>
 <div class="main">
   <h1 style="text-align: center;">Thông Tin Món Ăn</h1>
-  <div class="hinh">
-    <img style="margin: auto;"  height="400" width="400" src="assets/uploads/<?php echo $m['hinhanh']?>">
-    <a href="index.php?action=giohang&id=<?php echo  $m['id_monan'] ?>"><img src="public/img/buynowbutton.png" width="145" height="150" style="float: right;" /></a>
-    <h2><?php echo $m['tenmonan'] ?> </h2>
+  <div class="image">
+    <img style="margin: auto;"  height="400" width="400" src="assets/uploads/<?php echo $food->image?>">
+    <a href="index.php?view=cart&id=<?php echo  $food->id ?>">
+      <img src="public/img/buynowbutton.png" width="145" height="150" style="float: right;" />
+    </a>
+    <h2><?php echo $food->name ?></h2>
   </div>
   <div class="cachnau">
     <?php
-    $thongtin='information/'.$m['id_monan'].'.php';
-    if (is_file($thongtin)) {
-      include($thongtin);
+    $information='assets/food-details/'.$food->name.'.html';
+    if (is_file($information)) {
+      include($information);
     }
     else{
       echo "<h2>Thành Phần</h2>

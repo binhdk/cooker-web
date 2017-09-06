@@ -1,7 +1,7 @@
 <?php 
-  //call model
-  include_once('dao/MonAnDao.class.php');
-  if(isset($_GET['id'])) $songuoi=$_GET['id'];
+$foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
+  if(isset($_GET['q'])) $number_person=$_GET['q'];
+
   $tong=0;
   $tong_sang=0;
   $tong_trua1=0;
@@ -10,7 +10,7 @@
   $tong_toi1=0;
   $tong_toi2=0;
 
-  $sang=array();
+  $sang = array();
   $trua = array();
   $toi = array();
 ?>
@@ -27,7 +27,7 @@
   	  </thead>
   	  <?php 
   		if(isset($_POST['btnchitiet'])){
-          header('location:index.php?action=thanhphan&id=1');
+          header('location:.?view=component&id=1');
         }
 
   	    $tong_sang;
@@ -37,26 +37,26 @@
   	    $tong_toi1;
   	    $tong_toi2;
 
-  	    $ds_sang=MonAnDao::timKiemLoai(1);
-  	    $ds_trua=MonAnDao::timKiemLoai(2);
-  	    $ds_toi=MonAnDao::timKiemLoai(3);
+  	    $ds_sang = $foodDao->getAll(array('where' => "id=1"));
+  	    $ds_trua = $foodDao->getAll(array('where' => "id=2"));
+  	    $ds_toi = $foodDao->getAll(array('where' => "id=3"));
   	    			
-  	    $tam=array();
-  	    $tam=array_rand($ds_sang,5);
+  	    $tam = array();
+  	    $tam = array_rand($ds_sang, 5);
   	    			
-  	    $tam_trua1=array();
-  	    $tam_trua2=array();
-  	    $tam_trua3=array();
-  	    $tam_trua1=array_rand($ds_trua,5);
-  	    $tam_trua2=array_rand($ds_trua,5);
-  	    $tam_trua3=array_rand($ds_trua,5);
+  	    $tam_trua1 = array();
+  	    $tam_trua2 = array();
+  	    $tam_trua3 = array();
+  	    $tam_trua1 = array_rand($ds_trua, 5);
+  	    $tam_trua2 = array_rand($ds_trua, 5);
+  	    $tam_trua3 = array_rand($ds_trua, 5);
   	    			
-  	    $tam_toi1=array();
-  	    $tam_toi2=array();
-  	    $tam_toi1=array_rand($ds_toi,5);
-  	    $tam_toi2=array_rand($ds_toi,5);
+  	    $tam_toi1 = array();
+  	    $tam_toi2 = array();
+  	    $tam_toi1 = array_rand($ds_toi, 5);
+  	    $tam_toi2 = array_rand($ds_toi, 5);
   	    			
-  	    for ($i=0;$i<5;$i++) {
+  	    for ($i = 0; $i < 5; $i++) {
   					
   	  ?>
   	  <tbody>
@@ -64,63 +64,61 @@
   	  	<td>Thứ <?php echo $i+2 ?></td>
   	    <!-- lay nhung mon an sang-->
   	  	<td>
-  	  	  <a href="index.php?action=chitietmonan&id=<?php $sang[$i] =$ds_sang[$tam[$i]] ;
-  	  		echo $sang[$i]['id_monan'];?>">
+  	  	  <a href=".?view=food-detail&id=<?php $sang[$i] =$ds_sang[$tam[$i]] ;
+  	  		echo $sang[$i]->id;?>">
   	  		<?php 
-  	  		  $sang[$i] =$ds_sang[$tam[$i]] ;
-  	  		  $tong_sang+=$sang[$i]['gia'];
-  	  		  echo $sang[$i]['tenmonan']."<br/>";
+  	  		  $sang[$i] = $ds_sang[$tam[$i]] ;
+  	  		  $tong_sang+= $sang[$i]->price;
+  	  		  echo $sang[$i]->name."<br/>";
   	  		?>
   	  	  </a>
         </td>
         <!-- lay nhung mon an trua-->
         <td>
-          <a href="index.php?action=chitietmonan&id=<?php 
-			$trua[$i] =$ds_trua[$tam_trua1[$i]] ;
-		    echo $trua[$i]['id_monan'];?>">
+          <a href=".?view=food-detail&id=<?php $trua[$i] = $ds_trua[$tam_trua1[$i]] ;
+		          echo $trua[$i]->id;?>">
             <?php
-			  $trua[$i]   = $ds_trua[$tam_trua1[$i]];
-			  $tong_trua1+=$trua[$i]['gia'];
-			  echo $trua[$i]['tenmonan']."<br/> ";
-			?>
-		  </a>
-		  <a href="index.php?action=chitietmonan&id=<?php 
-		  	$trua[$i+1] =$ds_trua[$tam_trua2[$i]] ;
-		  	echo $trua[$i+1]['id_monan'];
-
-		   ?>">
-		   <?php 
-		   	$trua[$i+1] = $ds_trua[$tam_trua2[$i]];
-		  	$tong_trua2+=$trua[$i+1]['gia'];
-		   	echo $trua[$i+1]['tenmonan']."<br/> ";
-		   ?>
-		   </a>
-		   <a href="index.php?action=chitietmonan&id=<?php $trua[$i+2] =$ds_trua[$tam_trua3[$i]] ;
-			  echo $trua[$i+2]['id_monan'];?>">
-			  <?php 
-				$trua[$i+2] = $ds_trua[$tam_trua3[$i]];
-				$tong_trua3+=$trua[$i+2]['gia'];
-				 echo $trua[$i+2]['tenmonan']."<br/> ";
-			  ?>
-			</a>
+			          $trua[$i]   = $ds_trua[$tam_trua1[$i]];
+			          $tong_trua1+=$trua[$i]->price;
+			          echo $trua[$i]->name . "<br/> ";
+			      ?>
+		      </a>
+		      <a href=".?view=food-detail&id=<?php 
+		  	    $trua[$i+1] =$ds_trua[$tam_trua2[$i]] ;
+		  	    echo $trua[$i+1]->id;?>">
+		        <?php 
+		   	        $trua[$i+1] = $ds_trua[$tam_trua2[$i]];
+		  	        $tong_trua2+=$trua[$i+1]->price;
+		          	echo $trua[$i+1]->name . "<br/> ";
+		        ?>
+		      </a>
+		      <a href=".?view=food-detail&id=<?php $trua[$i+2] =$ds_trua[$tam_trua3[$i]] ;
+			        echo $trua[$i+2]->id;?>">
+			        <?php 
+				          $trua[$i+2] = $ds_trua[$tam_trua3[$i]];
+				          $tong_trua3+=$trua[$i+2]->price;
+				          echo $trua[$i+2]->name . "<br/> ";
+			        ?>
+			    </a>
         </td><!-- lay nhung mon an toi-->
+
         <td>
-          <a href="index.php?action=chitietmonan&id=<?php $toi[$i] =$ds_toi[$tam_toi1[$i]] ;
-		    echo $toi[$i]['id_monan'];?>">
-            <?php
-          	  $toi[$i] =$ds_toi[$tam_toi1[$i]];
-          	  $tong_toi1+=$toi[$i]['gia'];
-          	  echo $toi[$i]['tenmonan']."<br/>";
-            ?>
-		  </a>
-		  <a href="index.php?action=chitietmonan&id=<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
-		    echo $toi[$i+1]['id_monan'];?>">
-		    <?php 
-			  $toi[$i+1] =$ds_toi[$tam_toi2[$i]];
-			  $tong_toi2+=$toi[$i+1]['gia'];
-			  echo $toi[$i+1]['tenmonan']."<br/>"
-		    ?>
-		  </a>
+          <a href=".?view=food-detail&id=<?php $toi[$i] =$ds_toi[$tam_toi1[$i]] ;
+		          echo $toi[$i]->id;?>">
+              <?php
+          	      $toi[$i] =$ds_toi[$tam_toi1[$i]];
+          	      $tong_toi1+=$toi[$i]->price;
+          	      echo $toi[$i]->id . "<br/>";
+              ?>
+		      </a>
+		      <a href=".?view=food-detail&id=<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
+		          echo $toi[$i+1]->id;?>">
+		          <?php 
+			            $toi[$i+1] =$ds_toi[$tam_toi2[$i]];
+			            $tong_toi2+=$toi[$i+1]->price;
+			            echo $toi[$i+1]->name."<br/>"
+		         ?>
+		      </a>
         </td>
   	  </tr>		
   	  </tbody>
@@ -131,15 +129,16 @@
 	    <label id="lbltien">Tổng tiền: </label></td>
 		<td>
 		  <input type="text" name="" value="<?php 
-			$tong+=$tong_sang+$tong_trua1+$tong_trua2+$tong_trua3+$tong_toi1+$tong_toi2;
-			echo $tong*$songuoi;?>"><br/>
+			$tong+= $tong_sang + $tong_trua1 + $tong_trua2 + $tong_trua3 + $tong_toi1 + $tong_toi2;
+			echo $tong * $number_person;?>"><br/>
 		</td>
 	</tr>
 	<tr>
 	  <td></td>
 	  <td>
-		<input type="submit" value="Gợi ý lại" onclick="window.location.reload()" name="btnlamlai" style="size: 200px;"/>
-		<input method="post"  type="submit" value="Chi tiết" name="btnchitiet" style="size: 200px;"/>
+		  <input type="submit" value="Gợi ý lại" onclick="window.location.reload()" name="btnlamlai" 
+        style="size: 200px;"/>
+		  <input method="post"  type="submit" value="Chi tiết" name="btnchitiet" style="size: 200px;"/>
 	  </td>
 	</tr>
 </div>

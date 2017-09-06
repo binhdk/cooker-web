@@ -15,12 +15,12 @@
         ?> 
       </div>
      <div class="panel-body">
-        <a href="index.php?view=food-detail&id=<?php echo $food->id?>">
+        <a href=".?view=food-detail&id=<?php echo $food->id?>">
           <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive"  alt="Image">
         </a>
       </div>
       <div class="panel-footer">
-        <a href="index.php?view=cart&id=<?php echo  $food->id ?>">Mua nguyên liệu</a>
+        <a href=".?view=cart&id=<?php echo  $food->id ?>">Mua nguyên liệu</a>
       </div>
       </div>
     </div>

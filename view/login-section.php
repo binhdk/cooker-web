@@ -12,16 +12,16 @@
         <div class="col-md-12">
           <form class="form" role="form" method="post" action="index.php" accept-charset="UTF-8" id="login-nav">
             <div class="form-group">
-              <label class="sr-only" for="exampleInputEmail2">Email</label>
-              <input type="email" class="form-control" name="email"  id="exampleInputEmail2" placeholder="Email address" required>
+              <label class="sr-only" for="email">Email</label>
+              <input type="email" class="form-control" name="email"  id="email" placeholder="Email address" required>
               </div>
               <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword2">password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                 <div class="help-block text-right"><a href="">Quên mật khẩu ?</a></div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                  <button type="submit" name="login" class="btn btn-primary btn-block">Đăng nhập</button>
                 </div>
                 <div class="checkbox">
                   <label>
@@ -31,9 +31,18 @@
           </form>
         </div>
         <div class="bottom text-center">
-            Chưa có tài khoản ?<a href="index.php?action=dangky"><b>Đăng ký </b></a>
+            Chưa có tài khoản ?<a href=".?view=register"><b>Đăng ký </b></a>
         </div>
       </div>                    
     </li>
   </ul>
 </li>
+<!-- handle customer login -->
+<?php
+if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])) {
+    $email = ($_POST['email']);
+    $password = $_POST['password'];
+    $customerController = new controller\CustomerController;
+    $customer = $customerController->login($email, $password);
+}
+?>

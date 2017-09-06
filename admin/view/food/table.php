@@ -53,7 +53,7 @@
 					<?php
 					$image = 'assets/uploads/' . $food->image;
 					if (is_file($image)) {
-                        echo '<image src="'. $image .'" style="max-width:50px; max-height:50px;" />';
+                        echo '<img src="'. $image .'" style="max-width:50px; max-height:50px;" />';
                     }
                     ?>
                 </td>

@@ -13,7 +13,7 @@
 		vertical-align: middle!important;
 	}
 </style>
-<form id="cart_form" method="post" action="index.php?action=giohang&task=mua" role="form">
+<form id="cart_form" method="post" action=".?view=cart&action=buy" role="form">
 
 <div class="col-xs-12">
 	<h2>Giỏ hàng</h2>
@@ -23,50 +23,52 @@
 			<tr>
 				<th class="hidden-xs">STT</th>
 				<th class="hidden-xs">Ảnh</th>
-				<th>Mon an</th>
+				<th>Món ăn</th>
 				<th>Giá</th>
 				<th>Số lượng</th>
 				<th>Tác vụ</th>
 			</tr>
 		</thead>
 		<tbody>
-		     <?php 
-		      $stt = 0;
-			 $giohang=listdonhang();
-			 if(!empty($giohang)){
-			  foreach ($giohang as $monan):
-				$stt++;
+		    <?php 
+		        $stt = 0;
+			    $cart = getCart();
+			    if(!empty($cart)){
+			    foreach ($cart as $food):
+				    $stt++;
 			?>
 			<tr>
 				<td class="hidden-xs"><?php echo $stt;?></td>
 				<td class="hidden-xs">
 					<?php
-					$image = 'assets/uploads/'.$monan['hinhanh'];
-					if (is_file($image)) {
-                        echo '<image src="'.$image.'" style="max-width:50px; max-height:50px;" />';
-                    }
+					    $image = 'assets/uploads/' . $food['image'];
+					    if (is_file($image)) {
+                            echo '<img src="' . $image . '" style="max-width:50px; max-height:50px;" />';
+                        }
                     ?>
                 </td>
 				<td>
-					<a href="index.php?action=chitietmonan&id=<?php echo $monan['id_monan'];?>"><?php echo $monan['tenmonan'];?></a>
+					<a href="index.php?view=food-detail&id=<?php echo $food['id'];?>">
+					    <?php echo $food['name'];?>
+					</a>
 				</td>
 				<td>
-					<?php echo number_format($monan['gia'],0,',','.'); ?>
+					<?php echo number_format($food['price'], 0, ',', '.'); ?>
 				</td>
 				<td>
 					<div class="btn-group">
-						<input name="soluong[<?php echo $monan['id_monan'];?>" type="text" value="<?php echo $monan['soluong'];?> " size="3" class="form-control text-center"/>
+						<input name="soluong[<?php echo $food['id'];?>" type="text" value="<?php echo $food['quantity'];?> " size="3" class="form-control text-center"/>
 					</div>
 				</td>
 				<td>
-					<a href="index.php?action=giohang&task=xoa&id_xoa=<?php echo $monan['id_monan'];?>" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
+					<a href=".?view=cart&action=delete&id=<?php echo $food['id'];?>" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
 				</td>
 			</tr>
 			<?php endforeach; }?>
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="6">Thành tiền : <?php echo tongTien();?> VNĐ</th>
+				<td colspan="6">Thành tiền : <?php echo total();?> VNĐ</th>
 			</tr>
 		</tfoot>
 	</table>

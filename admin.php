@@ -37,7 +37,7 @@ if (file_exists($file)) {
     require($file);
 } else {
     header('HTTP/1.1 Not Found 404', true, 404);
-    require(ABSPATH . '404.php');
+    require(ABSPATH . '404.html');
     exit();
 }
 ?>

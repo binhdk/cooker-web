@@ -10,8 +10,8 @@ class UserDaoImpl extends BaseDaoImpl
 
     public function getUser($options)
     {
-        $user = $this->get(Table::USER, $options);
-        return reset($user);
+        $users = $this->get(Table::USER, $options);
+        return reset($users) === false ? null : reset($users);
     }
 
     public function getAll($options)

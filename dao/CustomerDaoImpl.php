@@ -11,7 +11,7 @@ class CustomerDaoImpl extends BaseDaoImpl
     public function getCustomer($options = array())
     {
         $customers = $this->get(Table::CUSTOMER, $options);
-        return reset($customers);
+        return reset($customers) === false ? null : reset($customers);
     }
 
     public function getAll($options = array())
@@ -22,20 +22,20 @@ class CustomerDaoImpl extends BaseDaoImpl
 
     public function addCustomer($customer = array())
     {
-        $isAdd = $this->add(Table::CUSTOMER, $customer);
-        return $isAdd;
+        $rowAdd = $this->add(Table::CUSTOMER, $customer);
+        return $rowAdd;
     }
 
     public function editCustomer($customer = array())
     {
-        $isEdit = $this->edit(Table::CUSTOMER, $customer);
-        return $isEdit;
+        $rowEdit = $this->edit(Table::CUSTOMER, $customer);
+        return $rowEdit;
     }
 
     public function delCustomer($where = array())
     {
-    	$isDelete = $this->del(Table::CUSTOMER, $where);
-        return $isDelete;
+    	$rowDel = $this->del(Table::CUSTOMER, $where);
+        return $rowDel;
     }
 } 
 ?>
