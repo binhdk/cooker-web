@@ -33,6 +33,7 @@
 <!-- include javascript file -->
 <script src="public/js/jquery-3.2.0.min.js"></script>
 <script src="public/js/bootstrap.min.js"></script>
+<script src="public/js/angular.min.js"></script>
 <script src="public/js/script.js"></script>
 </body>
 </html>

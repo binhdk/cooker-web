@@ -43,7 +43,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($listFood as $food): ?>
+			<?php foreach ($foods as $food): ?>
 			<tr>
 				<td>
 					<input name="id[]" type="checkbox" value="<?php echo $food->id;?>"/>
@@ -53,7 +53,7 @@
 					<?php
 					$image = 'assets/uploads/' . $food->image;
 					if (is_file($image)) {
-                        echo '<image src="'.$image.'" style="max-width:50px; max-height:50px;" />';
+                        echo '<image src="'. $image .'" style="max-width:50px; max-height:50px;" />';
                     }
                     ?>
                 </td>

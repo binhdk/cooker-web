@@ -28,8 +28,8 @@ class FoodDaoImpl extends BaseDaoImpl
 
     public function editFood($food = array(), $options = array())
     {
-        $isEdit = $this->edit(Table::FOOD, $food, $options);
-        return $isEdit;
+        $rowEdited = $this->edit(Table::FOOD, $food, $options);
+        return $rowEdited;
     }
 
     public function delFood($where = array())

@@ -10,7 +10,7 @@ class BaseDaoImpl
         $this->conn = $conn;
     }
     
-    public function edit($table, $data = array(), $options =array())
+    public function edit($table, $data = array(), $options = array())
     {
         $keys = array();
         $values = array();
@@ -18,16 +18,15 @@ class BaseDaoImpl
             $values[] = $value;
             $keys[] = "$key=?";
         }
-        $where = isset($options['where']) ? ' where ' . $options['where'] : '';
+        $id = intval($data['id']);
+        $where = isset($options['where'])? ' where ' . $options['where'] : " where id=$id";
         $sql = "update $table set " . implode(',', $keys) . $where;
-        if($sql != null){
-            try{
-                $stat = $this->conn->prepare($sql);
-                $stat->execute($values);
-                return $stat->rowCount();
-            }catch(PDOException $e){
-                die ("Cannot update\n");
-            }
+        try{
+            $stat = $this->conn->prepare($sql);
+            $stat->execute($values);
+            return $stat->rowCount();
+        }catch(PDOException $e){
+            die ("Cannot update\n");
         }
     }
 
@@ -38,7 +37,7 @@ class BaseDaoImpl
         $values = array();
         foreach ($data as $key => $value) {
             $params[] = $value;
-            $keys .= '$key';
+            $keys[] = $key;
             $values[] = '?';
         }
         $sql = "insert into $table ("
@@ -46,7 +45,7 @@ class BaseDaoImpl
         try{
             $stat = $this->conn->prepare($sql);
             $stat->execute($params);
-            return $stat->lastInsertId();  
+            return $this->conn->lastInsertId();  
         }catch(PDOException $e){
             die ("Cannot update\n");
         }  

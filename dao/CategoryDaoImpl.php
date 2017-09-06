@@ -22,20 +22,20 @@ class CategoryDaoImpl extends BaseDaoImpl
 
     public function delCategory($options = array())
     {
-        $rowDeleted = $this->del(Table::CATEGORY, $options);
+        $rowDeleted = $this->edit(Table::CATEGORY, array('status' => 0), $options);
         return $rowDeleted;
     }
 
-    public function editCategory($category = array())
+    public function editCategory($category = array(), $options = array())
     {
-        $rowEdited = $this->edit(Table::CATEGORY, $category);
+        $rowEdited = $this->edit(Table::CATEGORY, $category, $options);
         return $rowEdited;
     }
 
     public function addCategory($category = array())
     {
-        $isAdded = $this->add($sql, $category);
-        return $isAdded;
+        $rowAdded = $this->add(Table::CATEGORY, $category);
+        return $rowAdded;
     }
 }
 ?>

@@ -2,6 +2,6 @@
 //load model
 $id = intval($_GET['id']);
 
-$foodDao = $factory->getDao(utils\enum\EnumDao::FOOD);
-$foodDao->delFood($id);
-header('location:admin.php?controller=monan');
+$foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
+$foodDao->delFood(array('id' => $id));
+header('location:admin.php?controller=food');

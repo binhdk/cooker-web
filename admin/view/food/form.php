@@ -6,11 +6,11 @@
       <div class="form-group">
         <label for="id" class="col-sm-3 control-label">Loại</label>
         <div class="col-sm-9">
-          <select name="id" class="form-control">
-            <?php foreach ($category as $cat) {
+          <select name="category_id" class="form-control">
+            <?php foreach ($categories as $category) {
                 $selected = '';
-                if ($food && ($food->id == $cat->id)) $selected = 'selected=""';
-                echo '<option value="'.$cat->id.'" '.$selected.'>'.$cat->id.'</option>';
+                if ($food && ($food->id == $category->id)) $selected = 'selected=""';
+                echo '<option value="' . $category->id . '" ' . $selected . '>' . $category->id . '</option>';
             } ?>
           </select>
         </div>
@@ -37,8 +37,9 @@
         <label for="image" class="col-sm-3 control-label">Ảnh</label>
         <div class="col-sm-9">
           <input name="image" type="file" class="form-control" id="price" accept="image/*"/>
-            <?php if ($food && is_file('assets/uploads/' . $food->image)) {
-                echo '<image src="assets/uploads/' . $food->image . '?time='.time().'" style="max-width:200px;" />';
+            <?php 
+                if ($food && is_file('assets/uploads/' . $food->image)) {
+                    echo '<image src="assets/uploads/' . $food->image . '?time='.time().'" style="max-width:200px;" />';
                 }
             ?>
         </div>
