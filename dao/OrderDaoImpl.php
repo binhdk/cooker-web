@@ -14,28 +14,24 @@ use utils\enum\TableEnum as Table;
         return reset($orders);     
  	}
 
-    public function getAll($options = array())
+    public function getOrders($options = array())
     {
-        $orders = $this->get(Table::ORDER, $options);
-        return $orders;
+        return $this->get(Table::ORDER, $options);
     }
 
     public function addOrder($order = array())
     {
-        $isAdd = $this->add(Table::ORDER, $order);
-        return $isAdd;
+        return $this->add(Table::ORDER, $order);
     }
 
     public function editOrder($order = array())
     {
-        $isEdit = $this->edit(Table::ORDER, $order);
-        return $isEdit;
+        return $this->edit(Table::ORDER, $order);
     }
 
     public function delOrder($where = array())
     {
-    	$isDelete = $this->del(Table::ORDER, $where);
-        return $isDelete;
+    	return $this->del(Table::ORDER, $where);
     }
  }
  ?>

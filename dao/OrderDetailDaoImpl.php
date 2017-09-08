@@ -10,32 +10,28 @@ class OrderDetailDaoImpl extends BaseDaoImpl
 
     public function getAll($options = array())
     {
-        $orderDetails = $this->get(Table::ORDER_DETAIL, $options);
-        return $orderDetails;
+        return $this->get(Table::ORDER_DETAIL, $options);
     }
 
     public function getOrderDetail($options = array())
     {
         $orderDetails = $this->get(Table::ORDER_DETAIL, $options);
-         return reset($orderDetails) === false ? null : reset($orderDetails);
+        return reset($orderDetails) === false ? null : reset($orderDetails);
     }
 
     public function addOrderDetail($orderDetail = array())
     {
-        $isAdd = $this->add(Table::ORDER_DETAIL, $orderDetail);
-        return $isAdd;
+        return $this->add(Table::ORDER_DETAIL, $orderDetail);
     }
 
     public function delOrderDetail($where = array())
     {
-        $isDelete = $this->del(Table::ORDER_DETAIL, $where);
-        return $isDelete;
+        return $this->del(Table::ORDER_DETAIL, $where);
     }
 
     public function editOrderDetail($orderDetail = array())
     {
-        $isEdit = $this->edit(Table::ORDER_DETAIL, $orderDetail);
-        return $isEdit;
+        return $this->edit(Table::ORDER_DETAIL, $orderDetail);
     }
 } 
 ?>

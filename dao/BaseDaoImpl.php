@@ -84,5 +84,18 @@ class BaseDaoImpl
             die ("Cannot get\n");
         }
     }
+
+    public function getBySQL($sql, $param = array())
+    {
+        if(!empty($sql)) {
+            try {
+                $stat = $this->conn->prepare($sql);
+                $stat->execute();
+                return $stat->fetchAll(PDO::FETCH_OBJ);
+            } catch(PDOException $e) {
+                die ("Cannot get\n");
+            }
+        }
+    }
 }
  ?>

@@ -42,7 +42,6 @@
 if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])) {
     $email = ($_POST['email']);
     $password = $_POST['password'];
-    $customerController = new controller\CustomerController;
-    $customer = $customerController->login($email, $password);
+    (new controller\CustomerController)->login($email, $password);
 }
 ?>

@@ -16,22 +16,21 @@ class UserDaoImpl extends BaseDaoImpl
 
     public function getAll($options)
     {
-        $users = $this->get(Table::USER, $options);
-        return $users;
+        return $this->get(Table::USER, $options);
     }
 
     public function editUser($user)
     {
-        $users = $this->edit(Table::USER, $user);
-        return reset($user);
+        return $this->edit(Table::USER, $user);
     }
 
-    public function addUser($user = array()){
-        
+    public function addUser($user = array())
+    {
         return $this->add(Table::USER, $user);
     }
 
-    public function delUser($options = array()){
+    public function delUser($options = array())
+    {
        return $this->del(Table::USER, $options);
     }
 }

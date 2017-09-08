@@ -10,8 +10,7 @@ class CategoryDaoImpl extends BaseDaoImpl
 
     public function getCategories($options = array())
     {
-        $categories = $this->get(Table::CATEGORY, $options);
-        return $categories;
+        return $this->get(Table::CATEGORY, $options);
     }
 
     public function getCategory($options = array())
@@ -22,20 +21,17 @@ class CategoryDaoImpl extends BaseDaoImpl
 
     public function delCategory($options = array())
     {
-        $rowDeleted = $this->edit(Table::CATEGORY, array('status' => 0), $options);
-        return $rowDeleted;
+        return $this->edit(Table::CATEGORY, array('status' => 0), $options);
     }
 
     public function editCategory($category = array(), $options = array())
     {
-        $rowEdited = $this->edit(Table::CATEGORY, $category, $options);
-        return $rowEdited;
+        return $this->edit(Table::CATEGORY, $category, $options);
     }
 
     public function addCategory($category = array())
     {
-        $rowAdded = $this->add(Table::CATEGORY, $category);
-        return $rowAdded;
+        return $this->add(Table::CATEGORY, $category);
     }
 }
 ?>

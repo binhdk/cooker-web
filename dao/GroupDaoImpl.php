@@ -16,27 +16,22 @@ class GroupDaoImpl extends BaseDaoImpl
     
    	public function getAll($options = array())
     {
-        $list = $this->get(Table::GROUP, $options );
-        return $list;
-        
+        return $this->get(Table::GROUP, $options );  
    	}
 
     public function addGroup($group = array())
     {
-        $isAdd = $this->add(Table::GROUP, $group);
-        return $isAdd;
+        return $this->add(Table::GROUP, $group);
     }
 
     public function editGroup($group = array())
     {
-        $isEdit = $this->edit(Table::GROUP, $group);
-        return $isEdit;
+        return $this->edit(Table::GROUP, $group);
     }
 
     public function delGroup($where = array())
     {
-        $isDelete = $this->del(Table::GROUP, $where);
-        return $isDelete;
+        return $this->del(Table::GROUP, $where);
     }
 }
 

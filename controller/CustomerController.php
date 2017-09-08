@@ -5,13 +5,20 @@ use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;
 class CustomerController
 {
+    private $customerDao;
+    
+    public function __construct()
+    {
+       $this->customerDao = $GLOBALS['factory']->getDao(DaoEnum::CUSTOMER);
+    }
+    public function register($customer = array())
+    {
+        return $this->customerDao->addCustomer($customer);
+    }
+
     public function login($email, $password)
     {
-
-        $factory = dao\AbstractDaoFactory::getDaoFactory(FactoryEnum::MYSQL);
-        $customerDao = $factory->getDao(DaoEnum::CUSTOMER);
-        $customer = $customerDao->getCustomer(array('where' => "email='$email'"));
-        
+        $customer = $this->customerDao->getCustomer(array('where' => "email='$email'"));
         if ($customer != null) {
             $password_hash = $customer->password;
             $check = password_verify($password,$password_hash);
@@ -32,9 +39,11 @@ class CustomerController
         }
     }
     
-    public function logout($customer)
+    public function logout()
     {
         unset($_SESSION['customer']);
+        unset($_SESSION['cart']);
+        header('location:.');
     }
 }
 ?>

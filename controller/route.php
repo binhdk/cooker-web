@@ -15,24 +15,22 @@ if (isset($_GET['view'])) {
             require_once('controller/search.php');
             break;
         case 'logout':
-            unset($_SESSION['customer']);
-            unset($_SESSION['cart']);
-            header("location:.");
+            (new controller\CustomerController)->logout();
             break;
         case 'food-detail':
-            require_once('view/food-detail.php');
+            require_once('controller/food-detail.php');
             break;
         case 'food-category-detail':
             require_once('controller/food-category-detail.php');
             break;
         case 'suggest-food':
-            require_once('view/suggest-food.php');
+            require_once('controller/suggest-food.php');
             break;
         case 'cart':
             require_once('controller/cart.php');
             break;
         case 'health-news':
-            require_once 'view/health-news.php';
+            require_once 'controller/health-news.php';
             break;
         case 'order':
             require_once 'controller/order.php';

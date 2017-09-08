@@ -16,27 +16,23 @@ class FoodDaoImpl extends BaseDaoImpl
 
     public function getAll($options = array())
     {
-        $foods = $this->get(Table::FOOD, $options);
-        return $foods;
+        return $this->get(Table::FOOD, $options);
+        
     }
 
     public function addFood($food = array())
     {
-        $isAdd = $this->add(Table::FOOD, $food);
-        return $isAdd;
+       return $this->add(Table::FOOD, $food);
     }
 
     public function editFood($food = array(), $options = array())
     {
-        $rowEdited = $this->edit(Table::FOOD, $food, $options);
-        return $rowEdited;
+        return $this->edit(Table::FOOD, $food, $options);
     }
 
     public function delFood($where = array())
     {
-    	$isDelete = $this->del(Table::FOOD, $where);
-        return $isDelete;
+    	return $this->del(Table::FOOD, $where);
     }
-
  }
 ?>

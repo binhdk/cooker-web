@@ -2,24 +2,20 @@
 
 if(isset($_SESSION['customer']))
     $customer_id=$_SESSION['customer']['id'];
-$ds_iddonhang=array();
-$ds_iddonhang=BaseDao::selectall("select * from donhang where id_user='$id_user'");
-$ds_donhang=array();
+$dao = $factory->getDao(utils\enum\DaoEnum::ORDER);
+$options = array(
+	'select' => "id",
+    'where' => "customer_id=$customer_id"
+);
 
-foreach ($ds_iddonhang as $key) {
-  	$id_donhang=$key['id_donhang'];
-    $ds_donhang[$id_donhang]=
-    BaseDao::selectall("select * from chitietdonhang where id_donhang='$id_donhang'");
+$orderIds = $dao->getOrders($options);
+$orders = array();
+$sql = "SELECT food.id, name, image, price, quantity 
+			FROM order_detail
+			INNER JOIN food ON food.id=order_detail.food_id
+			WHERE order_detail.order_id=?";
+foreach ($orderIds as $orderId) {
+	$order[] = $dao->getBySQL($sql, array($orderId->id));
 }
-$chitiet=array();
-$soluong=array();
-foreach ($ds_donhang as $donhang) {
-  	foreach ($donhang as $key) {
-  	    $soluong[$key['id_monan']]=$key['soluong'];
-  	    $id_chitiet=$key['id_monan'];
-        $chitiet[$key['id_donhang']][]=BaseDao::selectone("select * from monan where id_monan='$id_chitiet'");
-    }
-}
-  // call model
-  include 'view/order.php';
+require 'view/order.php';
 ?>

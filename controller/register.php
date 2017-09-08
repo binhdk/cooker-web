@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             'created' => $date->getTimestamp(),
             'modified' => $date->getTimestamp()
         );
-        $id = $customerDao->addCustomer($customer);
+        $id = (new controller\CustomerController)->register($customer);
         if($id > 0){
             echo "<script>alert('Đăng ký thành công');</script>";
             (new controller\CustomerController())->login($email,$customer['password']);

@@ -43,11 +43,13 @@ function addItem($id)
             'price' => doubleval($food->price)
        );
     }
+    header('location:.?view=cart');
 }
 
 function saveOrder()
 {
-    if (!empty($_POST)) {
+    $cart = getCart();
+    if (!empty($_POST) && !empty($cart)) {
         $order = array(
             'customer_id' => $_SESSION['customer']['id'],
             'created' => gmdate('Y-m-d H:i:s', time() + 7 * 3600),
@@ -56,7 +58,6 @@ function saveOrder()
         );
         $order_id = $GLOBALS['orderDao']->addOrder($order);
         
-        $cart = getCart();
         if($order_id > 0) {
             foreach ($cart as $food) {
                 $order_detail = array(
@@ -72,9 +73,12 @@ function saveOrder()
             echo "<script>alert('Đặt hàng thành công');</script>";
             echo "<script>window.location.href='.';</script>";
         } else {
-            // echo "<script>alert('Có lỗi xảy ra vui lòng đợi trong giây lát, chúng tôi đang kiểm tra!');</script>";
+            echo "<script>alert('Có lỗi xảy ra vui lòng đợi trong giây lát, chúng tôi đang kiểm tra!');</script>";
             echo "<script>window.location.href='.?view=cart';</script>";
         }     
+    } else {
+        echo "<script>alert('Bạn chưa có sản phẩm nào trong giỏ hàng');</script>";
+        echo "<script>window.location.href='.?view=cart';</script>";
     } 
 }
 
