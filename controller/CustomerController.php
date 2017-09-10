@@ -37,6 +37,7 @@ class CustomerController
         } else {
               echo '<script>alert("Customer not exist");</script>';
         }
+        echo "<script>window.location.href='.';</script>";
     }
     
     public function logout()

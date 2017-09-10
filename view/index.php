@@ -5,12 +5,12 @@
   <title>Web Nấu Ăn Ngon</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="public/css/style.css">
 </head>
 
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <?php 
   //  header section
@@ -32,7 +32,7 @@
 
 <!-- include javascript file -->
 <script src="public/js/jquery-3.2.0.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
 <script src="public/js/angular.min.js"></script>
 <script src="public/js/script.js"></script>
 </body>

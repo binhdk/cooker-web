@@ -1,5 +1,4 @@
-<title>Home</title>
-<div class="container">  
+<div class="container text-center">  
   <div class="row">
     <?php 
         foreach($foods as $food){
@@ -7,7 +6,7 @@
     <div class="col-sm-4">
       <div class="panel panel-primary">
                  
-      <div class="panel-heading" style="text-align: center;"> 
+      <div class="panel-heading"> 
         <?php
             echo $food->name ;
             echo "<br/>";
@@ -16,7 +15,7 @@
       </div>
      <div class="panel-body">
         <a href=".?view=food-detail&id=<?php echo $food->id?>">
-          <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive"  alt="Image">
+          <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive" alt="Image">
         </a>
       </div>
       <div class="panel-footer">

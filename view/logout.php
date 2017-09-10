@@ -1,4 +1,20 @@
-<ul class="nav navbar-nav navbar-right">
-    <li><a href=".?view=logout" style="font-size: 17px;"><i class="glyphicon glyphicon-off"></i> Thoát  </a></li>
-    <li><a href=".?view=order" style="font-size: 17px;"><span class="glyphicon glyphicon-list-alt"></span> Đơn hàng </a></li>
-</ul> 
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown">
+    Tài khoản
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href=".?view=my-setting"><i class="glyphicon glyphicon-edit"></i>  Quản lý tài khoản</a>
+    </li>
+    <li>
+      <a href=".?view=order"><i class="glyphicon glyphicon-list-alt"></i>  Đơn hàng của tôi</a>
+    </li>
+    <li>
+      <a href=".?view=logout"><i class="glyphicon glyphicon-log-out"></i>  Thoát</a>
+    </li>
+  </ul>
+</li>
+
+    
+ 

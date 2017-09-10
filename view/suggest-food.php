@@ -14,9 +14,9 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   $trua = array();
   $toi = array();
 ?>
-<div class="suggest">
-  <table>
-  	<caption style="text-align: center;"><h2>Gợi ý thực đơn trong tuần</h2></caption>
+<div class="suggest container">
+  <table class="table table-hover table-bordered">
+  	<caption class="text-center"><h2>Gợi ý thực đơn trong tuần</h2></caption>
   	  <thead>
   		<tr>
   		  <th></th>
@@ -126,9 +126,9 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   	</table>
 	<tr>
 	  <td>
-	    <label id="lbltien">Tổng tiền: </label></td>
+	    <label for="sum" id="lbltien">Tổng tiền: </label></td>
 		<td>
-		  <input type="text" name="" value="<?php 
+		  <input type="text" name="sum" value="<?php 
 			$tong+= $tong_sang + $tong_trua1 + $tong_trua2 + $tong_trua3 + $tong_toi1 + $tong_toi2;
 			echo $tong * $number_person;?>"><br/>
 		</td>
@@ -136,9 +136,13 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 	<tr>
 	  <td></td>
 	  <td>
-		  <input type="submit" value="Gợi ý lại" onclick="window.location.reload()" name="btnlamlai" 
-        style="size: 200px;"/>
-		  <input method="post"  type="submit" value="Chi tiết" name="btnchitiet" style="size: 200px;"/>
+		  <button class="btn btn-primary" type="submit" onclick="window.location.reload()" name="btnlamlai" 
+        style="size: 200px;">
+        Gợi ý lại
+      </button>
+		  <button class="btn btn-primary" method="post" type="submit" name="btnchitiet">
+        Chi tiết
+      </button>
 	  </td>
 	</tr>
 </div>

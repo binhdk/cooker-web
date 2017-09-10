@@ -90,7 +90,7 @@ class BaseDaoImpl
         if(!empty($sql)) {
             try {
                 $stat = $this->conn->prepare($sql);
-                $stat->execute();
+                $stat->execute($param);
                 return $stat->fetchAll(PDO::FETCH_OBJ);
             } catch(PDOException $e) {
                 die ("Cannot get\n");

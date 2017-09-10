@@ -9,8 +9,8 @@
 <!-- jumboton end -->
 
 <!-- navbar start -->
-<nav class="navbar navbar-inverse " role="navigation">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -34,7 +34,7 @@
                 foreach($categories as $category){
                 ?>
             <li>
-              <a href=".?view=food-category-detail&id=<?php echo $category->id; ?>">
+              <a href=".?view=food-category-detail&id=<?php echo $category->id;?>">
                 <?php echo $category->name;?>
               </a>
             </li>
@@ -77,9 +77,15 @@
 
       <!-- login component start -->
       <ul class="nav navbar-nav navbar-right">
-        <li><?php require('view/login.php') ?>  </li>
-        <li><a href=".?view=cart"><span class="glyphicon glyphicon-shopping-cart">
-        </span>  Giỏ hàng</a></li>
+        <li>
+          <a href=".?view=cart">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            Giỏ hàng
+          </a>
+        </li>
+        <li>
+          <?php require('view/login.php');?>
+        </li>
       </ul>
       <!-- login component end -->
     </div>

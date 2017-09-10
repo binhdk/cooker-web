@@ -30,7 +30,7 @@
 
 <!-- javascript section -->
   <script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-  <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
       $(document).ready(function () {
           $('#sidebar .panel-heading').click(function () {

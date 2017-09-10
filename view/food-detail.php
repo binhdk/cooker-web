@@ -1,11 +1,15 @@
-<div class="main">
-  <h1 style="text-align: center;">Thông Tin Món Ăn</h1>
-  <div class="image">
-    <img style="margin: auto;"  height="400" width="400" src="assets/uploads/<?php echo $food->image?>">
-    <a href="index.php?view=cart&id=<?php echo  $food->id ?>">
-      <img src="public/img/buynowbutton.png" width="145" height="150" style="float: right;" />
-    </a>
-    <h2><?php echo $food->name ?></h2>
+<div class="food-detail container">
+  <h1 class="text-center">Thông Tin Món Ăn</h1>
+  <div class="row">
+    <div class="col-sm-10">
+       <img class="img-responsive" height="400" width="400" src="assets/uploads/<?php echo $food->image?>">
+       <h2><?php echo $food->name ?></h2>
+    </div>
+    <div class="col-sm-2">
+      <a href="index.php?view=cart&id=<?php echo  $food->id ?>">
+        <img class="img-responsive" src="public/img/buynowbutton.png" width="145" height="150" />
+      </a>
+    </div> 
   </div>
   <div class="cachnau">
     <?php
