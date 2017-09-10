@@ -27,7 +27,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   	  </thead>
   	  <?php 
   		if(isset($_POST['btnchitiet'])){
-          header('location:.?view=component&id=1');
+          
         }
 
   	    $tong_sang;
@@ -64,7 +64,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   	  	<td>Thứ <?php echo $i+2 ?></td>
   	    <!-- lay nhung mon an sang-->
   	  	<td>
-  	  	  <a href=".?view=food-detail&id=<?php $sang[$i] =$ds_sang[$tam[$i]] ;
+  	  	  <a href="food-detail/<?php $sang[$i] =$ds_sang[$tam[$i]] ;
   	  		echo $sang[$i]->id;?>">
   	  		<?php 
   	  		  $sang[$i] = $ds_sang[$tam[$i]] ;
@@ -75,7 +75,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
         </td>
         <!-- lay nhung mon an trua-->
         <td>
-          <a href=".?view=food-detail&id=<?php $trua[$i] = $ds_trua[$tam_trua1[$i]] ;
+          <a href="food-detail/<?php $trua[$i] = $ds_trua[$tam_trua1[$i]] ;
 		          echo $trua[$i]->id;?>">
             <?php
 			          $trua[$i]   = $ds_trua[$tam_trua1[$i]];
@@ -92,7 +92,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 		          	echo $trua[$i+1]->name . "<br/> ";
 		        ?>
 		      </a>
-		      <a href=".?view=food-detail&id=<?php $trua[$i+2] =$ds_trua[$tam_trua3[$i]] ;
+		      <a href="food-detail/<?php $trua[$i+2] =$ds_trua[$tam_trua3[$i]] ;
 			        echo $trua[$i+2]->id;?>">
 			        <?php 
 				          $trua[$i+2] = $ds_trua[$tam_trua3[$i]];
@@ -103,7 +103,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
         </td><!-- lay nhung mon an toi-->
 
         <td>
-          <a href=".?view=food-detail&id=<?php $toi[$i] =$ds_toi[$tam_toi1[$i]] ;
+          <a href="food-detail/<?php $toi[$i] =$ds_toi[$tam_toi1[$i]] ;
 		          echo $toi[$i]->id;?>">
               <?php
           	      $toi[$i] =$ds_toi[$tam_toi1[$i]];
@@ -111,7 +111,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
           	      echo $toi[$i]->id . "<br/>";
               ?>
 		      </a>
-		      <a href=".?view=food-detail&id=<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
+		      <a href="/food-detail/<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
 		          echo $toi[$i+1]->id;?>">
 		          <?php 
 			            $toi[$i+1] =$ds_toi[$tam_toi2[$i]];

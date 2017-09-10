@@ -10,14 +10,14 @@ if(isset($_GET['action'])) {
         case 'buy':
             if (!isset($_SESSION['customer'])) {
                 echo "<script>window.alert('Vui lòng đăng nhập để mua hàng');";
-                echo "window.location.href ='.?view=cart';</script>";
+                echo "window.location.href ='/cooker/cart';</script>";
             } else {
                 saveOrder();
             }
             break;
         case 'delete':
             unset($_SESSION['cart'][$_GET['id']]);
-            header('location:.?view=cart');
+            header('location:/cooker/cart');
             break;
     }
 } else {
@@ -43,7 +43,7 @@ function addItem($id)
             'price' => doubleval($food->price)
        );
     }
-    header('location:.?view=cart');
+    header('location:/cooker/cart');
 }
 
 function saveOrder()
@@ -74,11 +74,11 @@ function saveOrder()
             echo "<script>window.location.href='.';</script>";
         } else {
             echo "<script>alert('Có lỗi xảy ra vui lòng đợi trong giây lát, chúng tôi đang kiểm tra!');</script>";
-            echo "<script>window.location.href='.?view=cart';</script>";
+            echo "<script>window.location.href='cart';</script>";
         }     
     } else {
         echo "<script>alert('Bạn chưa có sản phẩm nào trong giỏ hàng');</script>";
-        echo "<script>window.location.href='.?view=cart';</script>";
+        echo "<script>window.location.href='cart';</script>";
     } 
 }
 

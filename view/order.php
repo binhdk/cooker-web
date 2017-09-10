@@ -34,7 +34,7 @@
       		  ?>
               </td>
       		<td class="col-sm-2">
-      		  <a href="index.php?view=food-detail&id=<?php echo $item->id; ?>">
+      		  <a href="food-detail/<?php echo $item->id; ?>">
       		  	<?php echo $item->name; ?>
       		  </a>
       		</td>

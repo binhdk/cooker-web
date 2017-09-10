@@ -34,7 +34,7 @@
                 foreach($categories as $category){
                 ?>
             <li>
-              <a href=".?view=food-category-detail&id=<?php echo $category->id;?>">
+              <a href="food-category-detail/<?php echo $category->id;?>">
                 <?php echo $category->name;?>
               </a>
             </li>
@@ -45,9 +45,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
             Gợi ý <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href=".?view=suggest-food&q=2">2 người ăn</a> </li>
-            <li><a href=".?view=suggest-food&q=3">3 người ăn</a> </li>
-            <li><a href=".?view=suggest-food&q=4">4 người ăn</a> </li>
+            <li><a href="suggest-food/2">2 người ăn</a> </li>
+            <li><a href="suggest-food/3">3 người ăn</a> </li>
+            <li><a href="suggest-food/4">4 người ăn</a> </li>
             <li><a href="#">khác...</a> </li>
           </ul>
           </li>
@@ -55,17 +55,17 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
             Sức khỏe <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href=".?view=health-news&id=2">Ăn Kiêng</a> </li>
-            <li><a href=".?view=health-news&id=3">Thực Phẩm An Toàn</a> </li>
-            <li><a href=".?view=health-news&id=4">Thực Đơn Giảm Cân</a> </li>
+            <li><a href="health-news/2">Ăn Kiêng</a> </li>
+            <li><a href="health-news/3">Thực Phẩm An Toàn</a> </li>
+            <li><a href="health-news/4">Thực Đơn Giảm Cân</a> </li>
           </ul>
         </li>
       </ul>
       
       <!-- search form start -->
-      <form class="navbar-form navbar-left"  method="post"  action=".?view=search">
+      <form class="navbar-form navbar-left"  method="get"  action="search/">
         <div class="input-group">
-          <input type="text" name="search" id="search" class="form-control" placeholder="Tìm kiếm">
+          <input type="text" name="s" id="search" class="form-control" placeholder="Tìm kiếm">
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit">
               <i class="glyphicon glyphicon-search"></i>
@@ -78,7 +78,7 @@
       <!-- login component start -->
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href=".?view=cart">
+          <a href="cart">
             <span class="glyphicon glyphicon-shopping-cart"></span>
             Giỏ hàng
           </a>

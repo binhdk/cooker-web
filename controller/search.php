@@ -2,8 +2,8 @@
 
 $search="";
 
-if(isset($_POST['search']))
-    $search=$_POST['search'];
+if(isset($_GET['s']))
+    $search=$_GET['s'];
 if (isset($_GET['search']))
     $search = $_GET['search'];
 
@@ -23,7 +23,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 $result = $foodDao->getAll($options);
 $total_rows = count($result);
 $total_page = ceil($total_rows / $limit);
-$url = "index.php?view=search&search=$search";
+$url = "/search/?search=$search";
 $pagination = pagination($url, $page, $total_page);
 $options['offset'] = $offset;
 $options['limit'] = $limit;

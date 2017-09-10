@@ -37,14 +37,14 @@ class CustomerController
         } else {
               echo '<script>alert("Customer not exist");</script>';
         }
-        echo "<script>window.location.href='.';</script>";
+        echo "<script>window.location.href='/cooker/';</script>";
     }
     
     public function logout()
     {
         unset($_SESSION['customer']);
         unset($_SESSION['cart']);
-        header('location:.');
+        header('location:/cooker/');
     }
 }
 ?>

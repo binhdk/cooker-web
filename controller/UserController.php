@@ -27,7 +27,7 @@ class UserController
                     'name'=> $user->name
                 );
                 $_SESSION['user'] = $userSession;
-                header('location:.');
+                header('location:admin.php');
             } else {
                   echo '<script>alert("Wrong email or password!");</script>';
             }

@@ -4,7 +4,7 @@
       foreach($foods as $food){
     ?>
     <div class="col-sm-4">
-      <div class="panel panel-primary" accesskey="detail">
+      <div class="panel panel-primary text-center" accesskey="detail">
         <div class="panel-heading">
           <?php
             echo $food->name ;

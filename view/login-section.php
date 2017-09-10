@@ -10,7 +10,7 @@
     <li>
       <div class="row">
         <div class="col-md-12">
-          <form class="form" role="form" method="post" action="index.php" accept-charset="UTF-8" id="login-nav">
+          <form class="form" role="form" method="post" action="." accept-charset="UTF-8" id="login-nav">
             <div class="form-group">
               <label class="sr-only" for="email">Email</label>
               <input type="email" class="form-control" name="email"  id="email" placeholder="Email address" required>
@@ -31,7 +31,7 @@
           </form>
         </div>
         <div class="bottom text-center">
-            Chưa có tài khoản ?<a href=".?view=register"><b>Đăng ký </b></a>
+            Chưa có tài khoản ?<a href="register"><b>Đăng ký </b></a>
         </div>
       </div>                    
     </li>

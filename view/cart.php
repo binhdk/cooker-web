@@ -1,5 +1,5 @@
 <div class="container">
-  <form id="cart_form" method="post" action=".?view=cart&action=buy" role="form">
+  <form id="cart_form" method="post" action="cart/buy" role="form">
   <div class="col-xs-12">
 	<h2>Giỏ hàng</h2>
 
@@ -33,7 +33,7 @@
                     ?>
                 </td>
 				<td>
-					<a href="index.php?view=food-detail&id=<?php echo $food['id'];?>">
+					<a href="food-detail/<?php echo $food['id'];?>">
 					    <?php echo $food['name'];?>
 					</a>
 				</td>
@@ -46,7 +46,7 @@
 					</div>
 				</td>
 				<td>
-					<a href=".?view=cart&action=delete&id=<?php echo $food['id'];?>" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
+					<a href="cart/delete/<?php echo $food['id'];?>" class="text-danger"><i class="glyphicon glyphicon-remove"></i></a>
 				</td>
 			</tr>
 			<?php endforeach; }?>
