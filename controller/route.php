@@ -35,6 +35,9 @@ if (isset($_GET['view'])) {
         case 'order':
             require_once 'controller/order.php';
             break;
+        default :
+            header('location:404.html');
+            break;
     }
 }
 ?>

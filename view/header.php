@@ -78,7 +78,7 @@
       <!-- login component start -->
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="cart">
+          <a href="cart/">
             <span class="glyphicon glyphicon-shopping-cart"></span>
             Giỏ hàng
           </a>
