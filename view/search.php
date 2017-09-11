@@ -14,12 +14,12 @@
         ?> 
       </div>
       <div class="panel-body">
-        <a href=".?view=food-detail&id=<?php echo $food->id;?>">
+        <a href="food-detail/<?php echo utils\Help::transformURL($food->name . ' ' . $food->id . '.html');?>">
           <img src="assets/uploads/<?php echo $food->image; ?>" class="img-responsive" style="width:100%" alt="Image">
         </a>
       </div>
       <div class="panel-footer">
-        <a href=".?view=cart&id=<?php echo  $food->id ?>">Mua nguyên liệu</a>
+        <a href="cart/add/<?php echo  $food->id ?>">Mua nguyên liệu</a>
       </div>
       </div>
     </div>

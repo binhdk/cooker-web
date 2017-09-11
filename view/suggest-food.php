@@ -83,7 +83,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 			          echo $trua[$i]->name . "<br/> ";
 			      ?>
 		      </a>
-		      <a href=".?view=food-detail&id=<?php 
+		      <a href="food-detail/<?php 
 		  	    $trua[$i+1] =$ds_trua[$tam_trua2[$i]] ;
 		  	    echo $trua[$i+1]->id;?>">
 		        <?php 

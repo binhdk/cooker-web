@@ -6,7 +6,7 @@
        <h2><?php echo $food->name ?></h2>
     </div>
     <div class="col-sm-2">
-      <a href="cart/<?php echo  $food->id ?>">
+      <a href="cart/add/<?php echo  $food->id ?>">
         <img class="img-responsive" src="public/img/buynowbutton.png" width="145" height="150" />
       </a>
     </div> 

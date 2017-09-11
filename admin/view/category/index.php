@@ -23,7 +23,7 @@
     </div><!--/.container-->
 
     <script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="public/bootstraps/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebar .panel-heading').click(function () {
@@ -35,6 +35,10 @@
             });
             $('#action').change(function(){
                 $('#category_form').submit();
+            });
+
+            $('.del').on('click', function () {
+                return confirm('Are you sure?');
             });
         });
     </script>

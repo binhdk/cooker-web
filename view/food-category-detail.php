@@ -13,12 +13,12 @@
           ?>                                 
         </div>
         <div  class="panel-body">
-          <a href="index.php?action=food-detail&id=<?php echo $food->id?>">
+          <a href="food-detail/<?php echo $food->id?>">
             <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive" style="width:100%" alt="Image">
           </a>
         </div>
         <div class="panel-footer">
-          <a href="index.php?view=cart&id=<?php echo  $food->id ?>">Mua nguyên liệu</a>
+          <a href="cart/add/<?php echo  $food->id ?>">Mua nguyên liệu</a>
         </div>
       </div>    
     </div>

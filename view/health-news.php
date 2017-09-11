@@ -1,4 +1,4 @@
-     
+  
 <div class="container">    
   <div class="row">
      <li>
@@ -25,3 +25,5 @@
       </li>
  </div>
 </div>
+
+<?php $title = "Chuyên mục sức khỏe";  ?>

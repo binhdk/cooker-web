@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="." style="color:#FFF">
+      <a class="navbar-brand" href="home/" style="color:#FFF">
                     Trang chủ 
       </a>
     </div>

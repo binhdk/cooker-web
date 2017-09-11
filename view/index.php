@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Web Nấu Ăn Ngon</title>
+  <title><?php echo isset($title) ? $title : 'Web nấu ăn ngon'; ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="//php.local:8888/cooker/" />

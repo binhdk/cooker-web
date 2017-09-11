@@ -36,8 +36,7 @@ if (isset($_GET['view'])) {
             require_once 'controller/order.php';
             break;
         default :
-            header('location:404.html');
-            break;
+            utils\Help::show_404();
     }
 }
 ?>

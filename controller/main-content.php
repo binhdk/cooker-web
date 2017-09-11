@@ -15,8 +15,8 @@ $options = array(
 $total_rows=count($foodDao->getAll());
   
 $total_page = ceil($total_rows/$limit);
-$url=".?view=home";
-$pagination = pagination($url, $page, $total_page);
+$url="home/";
+$pagination = utils\Help::pagination($url, $page, $total_page);
 $foods = $foodDao->getAll($options);
 
   // cal view

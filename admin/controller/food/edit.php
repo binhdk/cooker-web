@@ -24,14 +24,12 @@ if (!empty($_POST)) {
             echo "</script>";
                
         } else {
-            echo "<script>window.alert(' Update fail, please do later');";
-            // echo "window.location.href= 'admin.php?controller=food';";
-            echo "</script>";
+            echo "<script>window.alert(' Update fail, please do later');</script>";
         }
     } else {
         $id = $foodDao->addFood($food);
         if($id > 0) {
-            echo "<script>window.alert('Add success');";
+            echo "<script>window.alert('Add success');</script>";
             // echo "window.location.href='admin.php?controller=food';";
             echo "</script>";
         } else {
@@ -42,14 +40,14 @@ if (!empty($_POST)) {
     } 
 
 	//upload ảnh
-    $imageName = $id . '-' . alias($name);
+    $imageName = $id . '-' . utils\Help::alias($name);
     $config = array(
         'name' => $imageName,
         'upload_path'  => 'assets/updoads/',
         'allowed_exts' => 'jpg|jpeg|png|gif'
     );
 
-    $image = upload('image', $config);
+    $image = utils\Help::uploadImage('image', $config);
     
     // cập nhật ảnh mới
     if($image){
@@ -68,5 +66,6 @@ $user = $_SESSION['user'];
 $food = $foodDao->getFood(array('where' => "id=$id")) != null ? 
         $foodDao->getFood(array('where' => "id=$id")) : null;
 $categories = $categoryDao->getCategories(array('where' => "status=1"));
+
 //load view
 require('admin/view/food/edit.php');

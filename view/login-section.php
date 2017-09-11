@@ -31,7 +31,7 @@
           </form>
         </div>
         <div class="bottom text-center">
-            Chưa có tài khoản ?<a href="register"><b>Đăng ký </b></a>
+            Chưa có tài khoản ?<a href="register/"><b>Đăng ký </b></a>
         </div>
       </div>                    
     </li>

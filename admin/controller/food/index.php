@@ -26,7 +26,7 @@ $result = $foodDao->getAll($options);
 
 $total_rows = count($result);
 $total_page = ceil($total_rows/$limit);
-$pagination = pagination($url, $page, $total_page);
+$pagination = utils\Help::pagination($url, $page, $total_page);
 $options = array('limit' => $limit, 'offset' => $offset);
 $foods = $foodDao->getAll($options);
 $title = 'Món ăn';

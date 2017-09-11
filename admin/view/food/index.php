@@ -24,24 +24,28 @@
   <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $('#sidebar .panel-heading').click(function () {
-        $('#sidebar .list-group').toggleClass('hidden-xs');
-        $('#sidebar .panel-heading b').toggleClass('glyphicon-plus-sign').toggleClass('glyphicon-minus-sign');
-      });
+        $('#sidebar .panel-heading').click(function () {
+            $('#sidebar .list-group').toggleClass('hidden-xs');
+            $('#sidebar .panel-heading b').toggleClass('glyphicon-plus-sign').toggleClass('glyphicon-minus-sign');
+        });
 
-      $('#check_all').change(function() {
-        $('.table input:checkbox').prop('checked', this.checked);
-      });
+        $('#check_all').change(function() {
+            $('.table input:checkbox').prop('checked', this.checked);
+        });
 
-      $('#action').change(function() {
-        $('#product_form').submit();
-      });
+        $('#action').change(function() {
+            $('#food-form').submit();
+        });
 
-      $('#search').keyup(function(e) {
-        if (e.which==13) {
-          $('#product_form').submit();
-        }                
-      });
+        $('#search').keyup(function(e) {
+            if (e.which == 13) {
+              $('#food-form').submit();
+            }                
+        });
+
+        $('.del').on('click', function () {
+            return confirm('Are you sure?');
+        });
     });
   </script>
 </body>

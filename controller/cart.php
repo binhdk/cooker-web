@@ -19,15 +19,17 @@ if(isset($_GET['action'])) {
             unset($_SESSION['cart'][$_GET['id']]);
             header('location:/cooker/cart');
             break;
+        case 'add':
+            if (isset($_GET['id'])) {
+                $id = intval($_GET['id']);
+                addItem($id);
+            }
+            break;
     }
-} else {
-    if(isset($_GET['id'])) {
-        $id = $_GET['id'];
-        addItem($id);
-    }
-  // call view
-  require_once 'view/cart.php';
 }
+
+// call view
+require_once 'view/cart.php';
 
 function addItem($id)
 {

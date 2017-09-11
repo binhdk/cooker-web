@@ -12,7 +12,7 @@
 	}
 </style>
 
-<form id="monan_form" method="post" action="admin.php?controller=food" role="form">
+<form id="food-form" method="post" action="admin.php?controller=food" role="form">
 
 <div class="col-xs-12">
 	
@@ -75,16 +75,4 @@
 	</div>	
 </div>
 
-</form>
-<script>
- var elems = document.getElementsByClassName('del');
-    var confirmIt = function (e) {
-        if (!confirm('Are you sure?')) e.preventDefault();
-    };
-    for (var i = 0, l = elems.length; i < l; i++) {
-        elems[i].addEventListener('click', confirmIt, false);
-    }
- // $('.confirmation').on('click', function () {
- //        return confirm('Are you sure?');
- //    });
-</script>						
+</form>						
