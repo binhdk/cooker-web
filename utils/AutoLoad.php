@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace utils; 
 class AutoLoad
 {
 	public function __construct()

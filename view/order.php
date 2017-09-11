@@ -34,7 +34,7 @@
       		  ?>
               </td>
       		<td class="col-sm-2">
-      		  <a href="food-detail/<?php echo $item->id; ?>">
+      		  <a href="food-detail/<?php echo utils\Help::alias($food->name . ' ' . $food->id) . '.html'; ?>">
       		  	<?php echo $item->name; ?>
       		  </a>
       		</td>

@@ -33,7 +33,7 @@
                     ?>
                 </td>
 				<td>
-					<a href="food-detail/<?php echo $food['id'];?>">
+					<a href="food-detail/<?php echo utils\Help::alias($food['name'] . ' ' . $food['id']) . '.html';?>">
 					    <?php echo $food['name'];?>
 					</a>
 				</td>

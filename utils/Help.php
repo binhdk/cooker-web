@@ -4,15 +4,9 @@ class Help
 {
 	public static function show_404()
 	{
-        header('HTTP/1.1 Not Found 404', true, 404);
-        require(ABSPATH . '404.html');
+        header('HTTP/1.1 404 Not Found', true, 404);
+        require(ABSPATH . 'error/404.html');
         exit();
-    }
-
-    public static function transformURL($url)
-    {
-    	$arr = explode(" ", $url);
-    	return implode("-", $arr);
     }
 
     public static function pagination($url, $page, $total)

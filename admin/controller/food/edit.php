@@ -43,7 +43,7 @@ if (!empty($_POST)) {
     $imageName = $id . '-' . utils\Help::alias($name);
     $config = array(
         'name' => $imageName,
-        'upload_path'  => 'assets/updoads/',
+        'upload_path'  => 'assets/uploads/',
         'allowed_exts' => 'jpg|jpeg|png|gif'
     );
 

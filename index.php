@@ -1,6 +1,6 @@
 <?php
-require_once 'config.php';
-require_once 'AutoLoad.php';
+require_once 'utils/config.php';
+require_once 'utils/AutoLoad.php';
 ob_start();
 session_start();
 
@@ -12,7 +12,7 @@ use utils\enum\DaoEnum as DaoEnum;
 use utils\Help as Help;
 use dao\AbstractDaoFactory as Factory;
 
-new AutoLoad;
+new utils\AutoLoad;
 $factory = Factory::getDaoFactory(FactoryEnum::MYSQL);
 
 require_once 'view/index.php';

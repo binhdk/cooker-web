@@ -1,17 +1,15 @@
 <?php
 session_start();
 error_reporting(E_ALL & ~(E_NOTICE & E_WARNING));
-require_once 'config.php';
-require_once 'AutoLoad.php';
-
+require_once 'utils/config.php';
+require_once 'utils/AutoLoad.php';
 use dao as dao;
 use model as model;
 use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;
-
 use dao\AbstractDaoFactory as Factory;
 
-new AutoLoad;
+new utils\AutoLoad;
 
 $factory = Factory::getDaoFactory(FactoryEnum::MYSQL);
 

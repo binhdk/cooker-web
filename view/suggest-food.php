@@ -26,10 +26,6 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   		</tr>
   	  </thead>
   	  <?php 
-  		if(isset($_POST['btnchitiet'])){
-          
-        }
-
   	    $tong_sang;
   	    $tong_trua1;
   	    $tong_trua2;
@@ -64,8 +60,8 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
   	  	<td>Thứ <?php echo $i+2 ?></td>
   	    <!-- lay nhung mon an sang-->
   	  	<td>
-  	  	  <a href="food-detail/<?php $sang[$i] =$ds_sang[$tam[$i]] ;
-  	  		echo $sang[$i]->id;?>">
+  	  	  <a href="food-detail/<?php $sang[$i] = $ds_sang[$tam[$i]] ;
+  	  		  echo utils\Help::alias($sang[$i]->name . ' ' . $sang[$i]->id) . '.html';?>">
   	  		<?php 
   	  		  $sang[$i] = $ds_sang[$tam[$i]] ;
   	  		  $tong_sang+= $sang[$i]->price;
@@ -76,7 +72,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
         <!-- lay nhung mon an trua-->
         <td>
           <a href="food-detail/<?php $trua[$i] = $ds_trua[$tam_trua1[$i]] ;
-		          echo $trua[$i]->id;?>">
+		          echo utils\Help::alias($trua[$i]->name . ' ' . $trua[$i]->id) . '.html';?>">
             <?php
 			          $trua[$i]   = $ds_trua[$tam_trua1[$i]];
 			          $tong_trua1+=$trua[$i]->price;
@@ -85,7 +81,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 		      </a>
 		      <a href="food-detail/<?php 
 		  	    $trua[$i+1] =$ds_trua[$tam_trua2[$i]] ;
-		  	    echo $trua[$i+1]->id;?>">
+		  	    echo utils\Help::alias($trua[$i+1]->name . ' ' . $trua[$i+1]->id) . '.html';?>">
 		        <?php 
 		   	        $trua[$i+1] = $ds_trua[$tam_trua2[$i]];
 		  	        $tong_trua2+=$trua[$i+1]->price;
@@ -104,15 +100,15 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 
         <td>
           <a href="food-detail/<?php $toi[$i] =$ds_toi[$tam_toi1[$i]] ;
-		          echo $toi[$i]->id;?>">
+		          echo utils\Help::alias($toi[$i]->name . ' ' . $toi[$i]->id) . '.html';?>">
               <?php
           	      $toi[$i] =$ds_toi[$tam_toi1[$i]];
           	      $tong_toi1+=$toi[$i]->price;
           	      echo $toi[$i]->id . "<br/>";
               ?>
 		      </a>
-		      <a href="/food-detail/<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
-		          echo $toi[$i+1]->id;?>">
+		      <a href="food-detail/<?php $toi[$i+1] =$ds_toi[$tam_toi2[$i]] ;
+		          echo utils\Help::alias($toi[$i+1]->name . ' ' . $toi[$i+1]->id) . '.html';?>">
 		          <?php 
 			            $toi[$i+1] =$ds_toi[$tam_toi2[$i]];
 			            $tong_toi2+=$toi[$i+1]->price;
@@ -136,8 +132,7 @@ $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
 	<tr>
 	  <td></td>
 	  <td>
-		  <button class="btn btn-primary" type="submit" onclick="window.location.reload()" name="btnlamlai" 
-        style="size: 200px;">
+		  <button class="btn btn-primary" type="submit" onclick="window.location.reload()">
         Gợi ý lại
       </button>
 		  <button class="btn btn-primary" method="post" type="submit" name="btnchitiet">

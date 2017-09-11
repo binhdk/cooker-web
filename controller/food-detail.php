@@ -1,7 +1,7 @@
 <?php
  // call dao
 if(isset($_GET['id'])) {
-    $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+    $id = preg_replace("/\D/","",$_GET['id']);
     $foodDao = $factory->getDao(utils\enum\DaoEnum::FOOD);
     $food = $foodDao->getFood(array('where' => "id=$id"));
     if(!empty($food)) {

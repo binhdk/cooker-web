@@ -1,8 +1,7 @@
 <?php 
 if (!isset($_GET['view'])) {
     require('controller/main-content.php');
-}
-if (isset($_GET['view'])) {
+} else if (!empty($_GET['view'])) {
     $view = $_GET['view'];
     switch($view) {
         case 'home':
@@ -37,6 +36,7 @@ if (isset($_GET['view'])) {
             break;
         default :
             utils\Help::show_404();
+            break;
     }
 }
 ?>

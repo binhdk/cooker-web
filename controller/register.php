@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             (new controller\CustomerController())->login($email,$customer['password']);
         } else {
             echo "<script>alert('Có lỗi xảy ra trong qua trình xử lý, vui lòng quay lại sau!');";
-            echo "window.location.href='index.php';</script>";
+            echo "window.location.href='register/';</script>";
     }
   } 
 }

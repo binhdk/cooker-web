@@ -14,7 +14,7 @@
         ?> 
       </div>
      <div class="panel-body">
-        <a href="food-detail/<?php echo utils\Help::transformURL($food->name . ' ' . $food->id . '.html');?>">
+        <a href="food-detail/<?php echo utils\Help::alias($food->name . ' ' . $food->id) . '.html';?>">
           <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive" alt="Image">
         </a>
       </div>

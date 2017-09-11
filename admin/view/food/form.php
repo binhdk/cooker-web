@@ -24,8 +24,8 @@
       <div class="form-group">
         <label for="component" class="col-sm-3 control-label">Thành phần</label>
         <div class="col-sm-9">
-          <textarea name="component" rows=2 class="form-control" id="component" placeholder="Thành phần" /><?php echo $food ? $food->component : ''; ?></textarea>
-      </div>
+          <textarea name="component" rows=2 class="form-control" id="component" placeholder="Thành phần"><?php echo $food ? $food->component : ''; ?></textarea>
+        </div>
       </div>                       
       <div class="form-group">
         <label for="price" class="col-sm-3 control-label">Giá</label>
@@ -47,15 +47,15 @@
       <div class="form-group">    
         <label for="detail" class="col-sm-3 control-label">Mô tả</label>
         <div class="col-sm-9">
-          <textarea name="detail" rows=5 class="form-control" id="detail" placeholder="Mô tả món ăn" />
-            <?php echo $food ? $food->detail : ''; ?>
+          <textarea name="detail" rows=5 class="form-control" id="detail" placeholder="Mô tả món ăn">
+            <?php echo $food ? $food->detail : '';?>
           </textarea>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-          <button type="submit" class="btn btn-primary"><?php echo $food ? 'Cập nhật' : 'Thêm mới' ;?>
-              
+          <button type="submit" class="btn btn-primary">
+            <?php echo $food ? 'Cập nhật' : 'Thêm mới' ;?>
           </button>
           <a class="btn btn-warning" href="admin.php?controller=food">Trở về</a>
         </div>
