@@ -24,9 +24,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle=
-          "dropdown" style="color:#FFF">
-                    Thực đơn <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#FFF">
+            Thực đơn <span class="caret"></span></a>
           <ul class="dropdown-menu"  role="menu">
             <?php
                 $categories = $factory->getDao(
@@ -38,7 +37,7 @@
                 <?php echo $category->name;?>
               </a>
             </li>
-              <?php  } ?>
+              <?php }?>
          </ul>
         </li>
         <li class="dropdown" style="width:100px">

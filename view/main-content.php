@@ -3,7 +3,7 @@
     <?php 
         foreach($foods as $food){
     ?>
-    <div class="col-sm-4">
+    <div class="col-xs-6 col-sm-4 col-md-3">
       <div class="panel panel-primary">
                  
       <div class="panel-heading"> 
@@ -15,7 +15,7 @@
       </div>
      <div class="panel-body">
         <a href="food-detail/<?php echo utils\Help::alias($food->name . ' ' . $food->id) . '.html';?>">
-          <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive" alt="Image">
+          <img src="assets/uploads/<?php echo $food->image?>" class="img-responsive center-block" alt="Image">
         </a>
       </div>
       <div class="panel-footer">

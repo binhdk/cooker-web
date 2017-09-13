@@ -1,12 +1,9 @@
 <?php 
 
-$search="";
-
 if(isset($_GET['s']))
-    $search=$_GET['s'];
+    $search = $_GET['s'];
 if (isset($_GET['search']))
     $search = $_GET['search'];
-
 // panigation
 if (isset($_GET['page'])) 
     $page = intval($_GET['page']);

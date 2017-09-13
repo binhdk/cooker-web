@@ -29,9 +29,9 @@
   </div>
 
 <!-- javascript section -->
-  <script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-  <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+  <script src="public/js/jquery-3.2.0.min.js"></script>
+  <script src="public/bootstrap/js/bootstrap.min.js"></script>
+  <script>
       $(document).ready(function () {
           $('#sidebar .panel-heading').click(function () {
               $('#sidebar .list-group').toggleClass('hidden-xs');

@@ -6,10 +6,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 col-xs-12 pull-right" id="sidebar" role="navigation">
+            <div class="col-sm-2 col-xs-12 pull-right" id="sidebar" role="navigation">
                 <?php require('admin/view/common/sidebar.php'); ?>
             </div>
-            <div class="col-sm-9 col-xs-12 pull-left">
+            <div class="col-sm-10 col-xs-12 pull-left">
                 <div class="row">
                 <!-- BEGIN CONTENT -->
                     <?php require('admin/view/food/form.php'); ?>
@@ -19,9 +19,11 @@
         </div><!--/row-->
     </div><!--/.container-->
 
-    <script type="text/javascript" src="public/js/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="public/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
+    <script src="public/js/jquery-3.2.0.min.js"></script>
+    <script src="public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugin/ckeditor/ckeditor.js"></script>
+    <script>CKEDITOR.replace( 'detail' );</script>
+    <script>
         $(document).ready(function () {
             $('#sidebar .panel-heading').click(function () {
                 $('#sidebar .list-group').toggleClass('hidden-xs');

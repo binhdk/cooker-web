@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="public/css/style.css">
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body>
 
 <?php 
   //  header section
