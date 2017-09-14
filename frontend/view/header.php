@@ -83,7 +83,7 @@
           </a>
         </li>
         <li>
-          <?php require('view/login.php');?>
+          <?php require('login.php');?>
         </li>
       </ul>
       <!-- login component end -->

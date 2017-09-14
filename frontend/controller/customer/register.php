@@ -27,5 +27,5 @@ if (isset($_POST['submit'])) {
 }
 
 // call view
- require_once 'view/customer/register.php';
+ require_once 'frontend/view/customer/register.php';
 ?>

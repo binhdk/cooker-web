@@ -27,5 +27,5 @@ $options['limit'] = $limit;
 $foods = $foodDao->getAll($options);
 
 // call view
-require_once 'view/search.php';
+require_once 'frontend/view/search.php';
 ?>

@@ -15,20 +15,20 @@
 
 <?php 
   //  header section
-  include('view/header.php'); 
+  include('header.php'); 
 ?>
 
 <!--Center content -->
 <div class="center"> 
   <?php
   // call controller handling
-    include_once('controller/route.php');
+    include_once('frontend/controller/route.php');
   ?>
 </div>
 
 <!-- footer section -->
 <footer class="container-fluid text-center" style="clear:both;">
-  <?php include 'view/footer.php';?>
+  <?php include 'footer.php';?>
 </footer>
 
 <!-- include javascript file -->

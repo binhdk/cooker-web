@@ -29,7 +29,7 @@ if(isset($_GET['action'])) {
 }
 
 // call view
-require_once 'view/customer/cart.php';
+require_once 'frontend/view/customer/cart.php';
 
 function addItem($id)
 {

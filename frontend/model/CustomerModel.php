@@ -1,5 +1,5 @@
 <?php 
-namespace model;
+namespace frontend\model;
 use dao;
 use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;

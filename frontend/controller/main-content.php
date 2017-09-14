@@ -20,5 +20,5 @@ $pagination = utils\Help::pagination($url, $page, $total_page);
 $foods = $foodDao->getAll($options);
 
   // cal view
-  require_once 'view/main-content.php';
+  require_once 'frontend/view/main-content.php';
 ?>

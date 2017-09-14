@@ -18,5 +18,5 @@ $pagination = utils\Help::pagination($url, $page, $total_page);
 $options['offset'] = $offset;
 $options['limit'] = $limit;
 $foods = $foodDao->getAll($options);
-require 'view/food-category-detail.php';
+require 'frontend/view/food-category-detail.php';
 ?>
