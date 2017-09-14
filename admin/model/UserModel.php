@@ -1,10 +1,9 @@
 <?php 
-namespace controller;
+namespace admin\model;
 use dao;
-use model;
 use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;
-class UserController
+class UserModel
 {
     private $userDao;
 
@@ -27,19 +26,13 @@ class UserController
                     'name'=> $user->name
                 );
                 $_SESSION['user'] = $userSession;
-                header('location:admin.php');
+                return true;
             } else {
-                  echo '<script>alert("Wrong email or password!");</script>';
-            }
+                return false;
+            } 
         } else {
-              echo '<script>alert("User not exist");</script>';
+             return false;
         }
-    }
-    
-    public function logout()
-    {
-        unset($_SESSION['user']);
-        header('location:admin.php');
     }
 }
 ?>

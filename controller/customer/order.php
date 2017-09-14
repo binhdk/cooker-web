@@ -19,6 +19,6 @@ if(empty($_SESSION['customer'])) {
     foreach ($orderIds as $orderId) {
     	$order_details[$orderId->id] = $dao->getBySQL($sql, array($orderId->id));
     }
-    require 'view/order.php';
+    require 'view/customer/order.php';
 }
 ?>

@@ -10,7 +10,7 @@
     <li>
       <div class="row">
         <div class="col-md-12">
-          <form class="form" role="form" method="post" action="." accept-charset="UTF-8" id="login-nav">
+          <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
             <div class="form-group">
               <label class="sr-only" for="email">Email</label>
               <input type="email" class="form-control" name="email"  id="email" placeholder="Email address" required>
@@ -37,11 +37,3 @@
     </li>
   </ul>
 </li>
-<!-- handle customer login -->
-<?php
-if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])) {
-    $email = ($_POST['email']);
-    $password = $_POST['password'];
-    (new controller\CustomerController)->login($email, $password);
-}
-?>

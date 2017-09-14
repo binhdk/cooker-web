@@ -11,17 +11,14 @@ if (isset($_POST['submit'])) {
             'email'=>$_POST['email'],
             'name' => $_POST['name'],
             'password'=> password_hash($_POST['password'],PASSWORD_DEFAULT,['cost' => 12]),
-            'address'=> $_POST['address'],
             'tel'=> intval($_POST['tel']),
-            'num_member'=> intval($_POST['number']),
-            'hobby'=> $_POST['hobby'],
             'created' => $date->getTimestamp(),
             'modified' => $date->getTimestamp()
         );
-        $id = (new controller\CustomerController)->register($customer);
+        $id = (new model\CustomerModel)->register($customer);
         if($id > 0){
             echo "<script>alert('Đăng ký thành công');</script>";
-            (new controller\CustomerController())->login($email,$customer['password']);
+            (new model\CustomerModel())->login($email,$customer['password']);
         } else {
             echo "<script>alert('Có lỗi xảy ra trong qua trình xử lý, vui lòng quay lại sau!');";
             echo "window.location.href='register/';</script>";
@@ -30,5 +27,5 @@ if (isset($_POST['submit'])) {
 }
 
 // call view
- require_once 'view/register.php';
+ require_once 'view/customer/register.php';
 ?>

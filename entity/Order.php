@@ -1,5 +1,5 @@
 <?php 
-namespace model;
+namespace entity;
 class Order
 {
   	private $id;

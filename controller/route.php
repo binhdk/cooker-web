@@ -1,42 +1,52 @@
 <?php 
-if (!isset($_GET['view'])) {
+if (!isset($_GET['mod'])) {
     require('controller/main-content.php');
-} else if (!empty($_GET['view'])) {
-    $view = $_GET['view'];
-    switch($view) {
+} else if (!empty($_GET['mod'])) {
+    $mod = $_GET['mod'];
+    switch($mod) {
         case 'home':
-            require('controller/main-content.php');
-            break;
-        case 'register':
-            require_once('controller/register.php');
+            require 'controller/main-content.php';
             break;
         case 'search':
-            require_once('controller/search.php');
+            require 'controller/search.php';
+            break;
+        case 'register':
+            require 'controller/customer/register.php';
             break;
         case 'logout':
-            (new controller\CustomerController)->logout();
-            break;
-        case 'food-detail':
-            require_once('controller/food-detail.php');
+            require 'controller/customer/logout.php';
             break;
         case 'food-category-detail':
-            require_once('controller/food-category-detail.php');
+            require 'controller/food-category-detail.php';
+            break;
+        case 'food-detail':
+            require 'controller/food-detail.php';
             break;
         case 'suggest-food':
-            require_once('controller/suggest-food.php');
+            require 'controller/suggest-food.php';
             break;
         case 'cart':
-            require_once('controller/cart.php');
+            require 'controller/customer/cart.php';
             break;
         case 'health-news':
-            require_once 'controller/health-news.php';
+            require 'controller/health-news.php';
             break;
         case 'order':
-            require_once 'controller/order.php';
+            require 'controller/customer/order.php';
             break;
         default :
             utils\Help::show_404();
             break;
     }
+}
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $is_logged = (new model\CustomerModel)->login($email, $password);
+    if($is_logged === true) 
+       header('location:/cooker');
+    else 
+      echo "<script>alert('Wrong email or password');</script>";
 }
 ?>

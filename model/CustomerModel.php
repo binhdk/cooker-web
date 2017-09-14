@@ -1,9 +1,9 @@
 <?php 
-namespace controller;
+namespace model;
 use dao;
 use utils\enum\FactoryEnum as FactoryEnum;
 use utils\enum\DaoEnum as DaoEnum;
-class CustomerController
+class CustomerModel
 {
     private $customerDao;
     
@@ -31,20 +31,16 @@ class CustomerController
                     'address '=> $customer->address
                 );
                 $_SESSION['customer'] = $customer_session;
-            } else {
-                  echo '<script>window.alert("Wrong email or password!");</script>';
+                return true;
             }
-        } else {
-              echo '<script>alert("Customer not exist");</script>';
         }
-        echo "<script>window.location.href='/cooker/';</script>";
+        return false;  
     }
     
     public function logout()
     {
         unset($_SESSION['customer']);
         unset($_SESSION['cart']);
-        header('location:/cooker/');
     }
 }
 ?>

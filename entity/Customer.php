@@ -1,5 +1,5 @@
 <?php 
-namespace model;
+namespace entity;
 class Customer
 {
   	private $id;
@@ -8,8 +8,6 @@ class Customer
   	private $password;
   	private $address;
   	private $tel;
-  	private $num_member;
-  	private $hobby;
   	private $created;
   	private $modified;
 

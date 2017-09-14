@@ -1,5 +1,5 @@
 <?php 
-namespace model;
+namespace entity;
 class Category
 {
   	private $id;

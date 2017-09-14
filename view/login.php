@@ -1,10 +1,7 @@
+<?php 
+ if(!empty($_SESSION['customer']))
+ 	require 'logout-section.php';
+ else
+ 	require 'login-section.php';
 
-<!-- call view -->
-  <?php
-    if(isset($_SESSION['customer']))
-      include 'logout.php';
-    else
-      include 'login-section.php';
-  ?>
-      
-
+?>

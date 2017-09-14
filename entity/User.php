@@ -1,5 +1,5 @@
 <?php 
-namespace model;
+namespace entity;
 class User
 {
   	private $id;
