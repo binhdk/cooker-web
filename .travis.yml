@@ -4,7 +4,7 @@ php:
   - '7.0'
   - hhvm # on Trusty only
   - nightly
-install: php index.php
+pre-install: composer install
 env:
   - DB=mysql
   - DB=pgsql

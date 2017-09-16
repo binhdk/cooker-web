@@ -1,4 +1,4 @@
 /vendor/
 .htaccess
-.food-db.sql
+food_db.sql
 utils/pass.php
