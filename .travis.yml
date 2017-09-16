@@ -1,11 +1,10 @@
 language: php
 php:
-  - '5.4'
-  - '5.6'
+  - '5.6.31'
   - '7.0'
   - hhvm # on Trusty only
   - nightly
-install: php vendor/vendors.php
+install: php index.php
 env:
   - DB=mysql
   - DB=pgsql
